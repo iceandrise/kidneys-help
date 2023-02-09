@@ -7,7 +7,7 @@ const StatusBarHeight = Constants.statusBarHeight;
 export const Colors = {
     primary: '#ffffff',
     secondary: '#E5E7EB',
-    tertiary: '#1F2937',
+    tertiary: '#800000',
     darkLight: '#9CA3AF',
     brand: '#CD5C5C',
     green: '#10B981',
@@ -44,6 +44,7 @@ export const PageTitle = styled.Text`
 `
 export const SubTitle = styled.Text`
     font-size: 18px;
+    font-family: cursive;
     margin-bottom: 20px;
     letter-spacing: 1px;
     font-weight: bold;
@@ -77,7 +78,7 @@ export const LeftIcon = styled.View`
     z-index: 1;
 `
 export const RightIcon = styled.TouchableOpacity`
-    left: 15px;
+    right: 15px;
     top: 38px;
     position: absolute;
     z-index: 1;
@@ -86,10 +87,21 @@ export const StyledButton = styled.TouchableOpacity`
     padding: 15px;
     background-color: ${brand};
     justify-content: center;
+    align-items: center;
     border-radius: 5px;
     height: 60px;
 `
 export const ButtonText = styled.Text`
     color: ${primary};
     font-size: 16px;
+`
+export const MsgBox = styled.Text`
+    text-align: center;
+    font-size: 13px;
+`
+export const Line = styled.View`
+    height: 1px;
+    width: 100%;
+    background-color: ${darkLight};
+    margin-vertical: 10px;
 `
