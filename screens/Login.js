@@ -16,6 +16,10 @@ import {
     ButtonText,
     MsgBox,
     Line,
+    ExtraText,
+    ExtraView,
+    TextLink,
+    TextLinkContent,
 } from './../components/styles';
 
 const {brand, darkLight, primary} = Colors;
@@ -29,7 +33,7 @@ const Login = () => {
             <InnerContainer>
                 <PageLogo resizeMode="cover" source={require('./../assets/image/logo.png')}/>
                 <PageTitle>KidneysHelp</PageTitle>
-                <SubTitle>Log In</SubTitle>
+                <SubTitle>Login</SubTitle>
 
                 <Formik
                     initialValues={{email: '', password: ''}}
@@ -77,6 +81,12 @@ const Login = () => {
                                 Sign In with Google
                             </ButtonText>
                         </StyledButton>
+                        <ExtraView>
+                            <ExtraText>Don't have an account? </ExtraText>
+                            <TextLink>
+                                <TextLinkContent>Signup now!</TextLinkContent>
+                            </TextLink>
+                        </ExtraView>
                     </StyledFormArea>)}
                 </Formik>
             </InnerContainer>
