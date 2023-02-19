@@ -23,11 +23,13 @@ import {
 } from './../components/styles';
 
 const {brand, darkLight, primary} = Colors;
+import KeyboardSet from '../components/keyboardSet';
 
 const Login = () => {
     const [hidePassword, setHidePassword] = useState(true);
 
     return (
+        <KeyboardSet>
         <StyledContainer>
             <StatusBar style="dark"/>
             <InnerContainer>
@@ -91,6 +93,7 @@ const Login = () => {
                 </Formik>
             </InnerContainer>
         </StyledContainer>
+        </KeyboardSet>
     )
 }
 
