@@ -25,7 +25,7 @@ import {
 const {brand, darkLight, primary} = Colors;
 import KeyboardSet from '../components/keyboardSet';
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
 
     return (
@@ -40,7 +40,8 @@ const Login = () => {
                 <Formik
                     initialValues={{email: '', password: ''}}
                     onSubmit={(values) =>{
-                        console.log(values)
+                        console.log(values);
+                        navigation.navigate("Home");
                     }}
                 >
                     {({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea>
@@ -85,7 +86,7 @@ const Login = () => {
                         </StyledButton>
                         <ExtraView>
                             <ExtraText>Don't have an account? </ExtraText>
-                            <TextLink>
+                            <TextLink onPress={() => navigation.navigate("Signup")}>
                                 <TextLinkContent>Signup now!</TextLinkContent>
                             </TextLink>
                         </ExtraView>

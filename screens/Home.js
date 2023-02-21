@@ -15,7 +15,7 @@ import {
 } from './../components/styles';
 
 
-const Home = () => {
+const Home = ({navigation}) => {
     return (
         <>
             <StatusBar style="light"/>
@@ -30,7 +30,7 @@ const Home = () => {
                         <StyledFormArea>
                         <Avatar resizeMode="cover" source={require('./../assets/image/logo.png')}/>
                         <Line />
-                            <StyledButton onPress={() => {}}>
+                            <StyledButton onPress={() => {navigation.navigate("Login")}}>
                                 <ButtonText>
                                 Logout
                                 </ButtonText>

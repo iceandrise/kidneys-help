@@ -25,7 +25,7 @@ import {
 const {brand, darkLight, primary} = Colors;
 import KeyboardSet from '../components/keyboardSet';
 
-const Signup = () => {
+const Signup = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
 
     return (
@@ -40,7 +40,8 @@ const Signup = () => {
                     initialValues={{firstName: '', lastName:'', profession: '', country: '',
                     speciality:'', workPlace: '', confirmPassword:'', email: '', password: ''}}
                     onSubmit={(values) =>{
-                        console.log(values)
+                        console.log(values);
+                        navigation.navigate('Home');
                     }}
                 >
                     {({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea>
@@ -137,7 +138,7 @@ const Signup = () => {
                         <MsgBox>...</MsgBox>
                         <StyledButton onPress={handleSubmit}>
                             <ButtonText>
-                                Login
+                                Signup
                             </ButtonText>
                         </StyledButton>
 
@@ -146,7 +147,7 @@ const Signup = () => {
 
                         <ExtraView>
                             <ExtraText>Already have an account? </ExtraText>
-                            <TextLink>
+                            <TextLink onPress={() => navigation.navigate("Home")}>
                                 <TextLinkContent>Login now!</TextLinkContent>
                             </TextLink>
                         </ExtraView>
