@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { View, Button} from 'react-native';
 
 import {
     InnerContainer,
@@ -7,11 +8,17 @@ import {
     SubTitle,
     StyledFormArea,
     StyledButton,
-    ButtonText,
+    StyledButtonMain,
+    MenuButtonText,
     Line,
+    MsgBox,
+    StyledContainer,
+    MenuImage,
     WelcomeContainer,
+    WelcomeContainer2,
     WelcomeImage,
     Avatar,
+    ItemsView,
 } from './../components/styles';
 
 
@@ -19,28 +26,49 @@ const Home = ({navigation}) => {
     return (
         <>
             <StatusBar style="light"/>
-            <InnerContainer>
-                <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')}/>
-
-
                 <WelcomeContainer>
-                    <PageTitle welcome={true}>Welcome to KidneysHelp</PageTitle>
-                    <SubTitle welcome={true}>Name</SubTitle>
-                    <SubTitle welcome={true}>Email</SubTitle>
-                        <StyledFormArea>
-                        <Avatar resizeMode="cover" source={require('./../assets/image/logo.png')}/>
-                        <Line />
-                            <StyledButton onPress={() => {navigation.navigate("Login")}}>
-                                <ButtonText>
-                                Logout
-                                </ButtonText>
-                            </StyledButton>
-
-                        
-
-                    </StyledFormArea>
+                    <MenuImage resizeMode="cover" source={require('./../assets/image/menu.png')}/>
+                    <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')}/>
                 </WelcomeContainer>
-            </InnerContainer>
+                <WelcomeContainer2>
+                    <ItemsView>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                Calculato
+                            </MenuButtonText>
+                </StyledButtonMain>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                My patients
+                            </MenuButtonText>
+                </StyledButtonMain>
+                </ItemsView>
+                <ItemsView>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                Dynamics
+                            </MenuButtonText>
+                </StyledButtonMain>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                Personal Info
+                            </MenuButtonText>
+                </StyledButtonMain>
+                </ItemsView>
+                <ItemsView>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                Help with app
+                            </MenuButtonText>
+                </StyledButtonMain>
+                <StyledButtonMain>
+                            <MenuButtonText>
+                                Payment
+                            </MenuButtonText>
+                </StyledButtonMain>
+                </ItemsView>
+
+                </WelcomeContainer2>
         </>
     )
 }

@@ -146,11 +146,25 @@ export const TextLinkContent = styled.Text`
     font-size: 15px;
     color: ${brand};
 `
-export const WelcomeContainer = styled(InnerContainer)`
-    padding: 25px;
-    padding-top: 10px;
-    justify-content: center;
+export const WelcomeContainer = styled.View`
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    position: absolute;
+    background-color: ${brand};
+    
 `
+export const WelcomeContainer2 = styled.View`
+    position: relative;
+    align-items: center;
+    width: 100%;
+    display: block;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    padding: 40px;
+    top: 40px;
+`
+    
 export const Avatar = styled.Image`
     width: 100px;
     height: 100px;
@@ -162,6 +176,40 @@ export const Avatar = styled.Image`
     margin-top: 10px;
 `
 export const WelcomeImage = styled.Image`
-    height: 50%;
-    min-width: 100%;
+    width: 45px;
+    height: 45px;
+    margin: 10px;
+`
+export const WelcomeTitle = styled.Text`
+    font-size: 25px;
+    text-align: center;
+    font-family: cursive;
+    color: ${brand};
+`
+export const MenuImage = styled.Image`
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+`
+export const StyledButtonMain = styled.TouchableOpacity`
+    border-width: 2px;
+    border-color: ${secondary};
+    justify-content: center;
+    border-radius: 10px;
+    height: 140px;
+    width: 140px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+`
+export const ItemsView = styled.View`
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+`
+export const MenuButtonText = styled.Text`
+    color: ${brand};
+    font-size: 20px;
+
 `
