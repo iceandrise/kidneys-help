@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Button} from 'react-native';
-
+import { Shadow } from 'react-native-shadow-2';
 import {
     InnerContainer,
     PageTitle,
@@ -33,11 +33,13 @@ const Home = ({navigation}) => {
                 <WelcomeContainer2>
                     <ItemsView>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')}/>
                             <MenuButtonText>
-                                Calculato
+                                Calculators
                             </MenuButtonText>
                 </StyledButtonMain>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/patient.png')}/>
                             <MenuButtonText>
                                 My patients
                             </MenuButtonText>
@@ -45,11 +47,13 @@ const Home = ({navigation}) => {
                 </ItemsView>
                 <ItemsView>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/research.png')}/>
                             <MenuButtonText>
                                 Dynamics
                             </MenuButtonText>
                 </StyledButtonMain>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/user.png')}/>
                             <MenuButtonText>
                                 Personal Info
                             </MenuButtonText>
@@ -57,11 +61,13 @@ const Home = ({navigation}) => {
                 </ItemsView>
                 <ItemsView>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/info.png')}/>
                             <MenuButtonText>
                                 Help with app
                             </MenuButtonText>
                 </StyledButtonMain>
                 <StyledButtonMain>
+                            <WelcomeImage resizeMode="cover" source={require('./../assets/image/payment.png')}/>
                             <MenuButtonText>
                                 Payment
                             </MenuButtonText>

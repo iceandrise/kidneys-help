@@ -12,9 +12,11 @@ export const Colors = {
     brand: '#CD5C5C',
     gray: '#A9A9A9',
     red: '#EF4444',
+    back: '#FFF5EE',
+    lightback: "#FFE4E1",
 }
 
-const {primary, secondary, tertiary, darkLight, brand, gray, red} = Colors;
+const {primary, secondary, tertiary, darkLight, brand, gray, red, back, lightback} = Colors;
 
 export const StyledContainer = styled.View`
     flex: 1;
@@ -151,13 +153,14 @@ export const WelcomeContainer = styled.View`
     flex-direction: row;
     width: 100%;
     position: absolute;
-    background-color: ${brand};
+    
     
 `
 export const WelcomeContainer2 = styled.View`
     position: relative;
     align-items: center;
     width: 100%;
+    backround-color: ${lightback};
     display: block;
     grid-template-columns: auto auto auto;
     justify-content: center;
@@ -176,8 +179,8 @@ export const Avatar = styled.Image`
     margin-top: 10px;
 `
 export const WelcomeImage = styled.Image`
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     margin: 10px;
 `
 export const WelcomeTitle = styled.Text`
@@ -192,10 +195,12 @@ export const MenuImage = styled.Image`
     margin: 10px;
 `
 export const StyledButtonMain = styled.TouchableOpacity`
-    border-width: 2px;
-    border-color: ${secondary};
+    border-width: 1px;
+    border-color: ${brand};
+    // background-color: ${lightback};
     justify-content: center;
-    border-radius: 10px;
+    align-items: center;
+    border-radius: 70px;
     height: 140px;
     width: 140px;
     margin-top: 20px;
@@ -210,6 +215,7 @@ export const ItemsView = styled.View`
 `
 export const MenuButtonText = styled.Text`
     color: ${brand};
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 16px;
 
 `
