@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Button} from 'react-native';
+import { View, Button, TouchableOpacity} from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
+import {Octicons, Ionicons, Fontisto} from '@expo/vector-icons';
 import {
     InnerContainer,
     PageTitle,
@@ -14,6 +15,7 @@ import {
     MsgBox,
     StyledContainer,
     MenuImage,
+    ActIcon,
     WelcomeContainer,
     WelcomeContainer2,
     WelcomeImage,
@@ -27,12 +29,12 @@ const Home = ({navigation}) => {
         <>
             <StatusBar style="light"/>
                 <WelcomeContainer>
-                    <MenuImage resizeMode="cover" source={require('./../assets/image/menu.png')}/>
+                    <MenuImage  source={require('./../assets/image/menu.png')}/>
                     <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')}/>
                 </WelcomeContainer>
                 <WelcomeContainer2>
                     <ItemsView>
-                <StyledButtonMain>
+                <StyledButtonMain onPress={() => navigation.navigate("Calculator")}>
                             <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')}/>
                             <MenuButtonText>
                                 Calculators

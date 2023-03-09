@@ -81,6 +81,12 @@ export const StyledInputLabel = styled.Text`
     font-size: 13px;
     text-align: left;
 `
+export const ActIcon = styled.TouchableOpacity`
+    left: 15px;
+    top: 38px;
+    position: absolute;
+    z-index: 1;
+`
 
 export const LeftIcon = styled.View`
     left: 15px;
@@ -148,6 +154,12 @@ export const TextLinkContent = styled.Text`
     font-size: 15px;
     color: ${brand};
 `
+
+export const TextContent = styled.Text`
+    font-size: 18px;
+    color: ${brand};
+`
+
 export const WelcomeContainer = styled.View`
     justify-content: space-between;
     flex-direction: row;
@@ -167,17 +179,7 @@ export const WelcomeContainer2 = styled.View`
     padding: 40px;
     top: 40px;
 `
-    
-export const Avatar = styled.Image`
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    border-radius: 50px;
-    border-width: 2px;
-    border-color: ${secondary};
-    margin-bottom: 10px;
-    margin-top: 10px;
-`
+
 export const WelcomeImage = styled.Image`
     width: 50px;
     height: 50px;
@@ -213,9 +215,57 @@ export const ItemsView = styled.View`
     flex-direction: row;
     width: 100%;
 `
+export const TextView = styled.View`
+    flex-direction: block;
+    width: 100%;
+`
+
+export const ItemsViewDop = styled.View`
+    justify-content: start;
+    flex-direction: row;
+    padding: 15px;
+    width: 100%;
+`
+
 export const MenuButtonText = styled.Text`
     color: ${brand};
     font-weight: bold;
     font-size: 16px;
+
+`
+export const CalcButtonText = styled.Text`
+    color: ${brand};
+    font-weight: bold;
+    font-size: 16px;
+
+`
+
+export const StyledButtonCalc = styled.TouchableOpacity`
+    border-width: 1px;
+    border-color: ${brand};
+    // background-color: ${lightback};
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 70px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+`
+
+export const StyledButtonPremium = styled.TouchableOpacity`
+    border-width: 1px;
+    border-color: ${brand};
+    background-color: ${lightback};
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 70px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
 
 `
