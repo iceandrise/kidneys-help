@@ -30,7 +30,7 @@ const RootStack = () => {
                     }
                 }}
                 //general screen
-                initialRouteName="ContactUs"
+                initialRouteName="Options"
             >
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Signup" component={Signup}/>

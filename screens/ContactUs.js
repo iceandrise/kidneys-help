@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity} from 'react-native';
 import {Colors} from './../components/styles';
@@ -59,14 +60,14 @@ const ContactUs = ({navigation}) => {
                 </WelcomeContainer>
                 <WelcomeContainer2>
                     <TextView>
-                        <StyledButtonCalc >
+                        <StyledButtonCalc onPress={() => Linking.openURL('https://instagram.com/kidneys_help?igshid=YmMyMTA2M2Y=')} >
                             <Fontisto name="instagram" color={brand} size={25}/>
                             <MenuButtonText>
                                 Contact us with Instagram
                             </MenuButtonText>
                         </StyledButtonCalc>
 
-                        <StyledButtonCalc >
+                        <StyledButtonCalc onPress={() => Linking.openURL('https://www.facebook.com/profile.php?id=100090866024411')} >
                             <Fontisto name="facebook" color={brand} size={25}/>
                             <MenuButtonText>
                                 Contact us with Facebook

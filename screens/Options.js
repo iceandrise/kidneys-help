@@ -62,7 +62,7 @@ const Options = ({navigation}) => {
                 </ItemsViewDop>
                 <ItemsViewDop>
                 <WelcomeImage resizeMode="cover" source={require('./../assets/image/logout.png')}/>
-                    <TextLink >
+                    <TextLink onPress={() => navigation.navigate("Login")} >
                         <TextContent>Logout</TextContent>
                     </TextLink>
                 </ItemsViewDop>
