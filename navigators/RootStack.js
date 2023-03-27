@@ -4,6 +4,7 @@ import Login from './../screens/Login';
 import Signup from './../screens/Signup';
 import Home from './../screens/Home';
 import Options from './../screens/Options';
+import Patients from '../screens/Patients';
 import Terms from './../screens/Terms';
 import Privacy from '../screens/Privacy';
 import Calculator from '../screens/Calculator';
@@ -33,7 +34,7 @@ const RootStack = () => {
           },
         }}
         //general screen
-        initialRouteName="Signup"
+        initialRouteName="Patients"
       >
         {isAuthorized ? (
           <Stack.Group>
@@ -43,6 +44,7 @@ const RootStack = () => {
             <Stack.Screen name="Terms" component={Terms} />
             <Stack.Screen name="Privacy" component={Privacy} />
             <Stack.Screen name="Calculator" component={Calculator} />
+            <Stack.Screen name="Patients" component={Patients} />
             <Stack.Screen name="ContactUs" component={ContactUs} />
           </Stack.Group>
         ) : (
