@@ -10,11 +10,14 @@ import Calculator from '../screens/Calculator';
 import ContactUs from '../screens/ContactUs';
 import React from 'react';
 import { Colors } from './../components/styles';
+import { useAuthContext } from '../provider/AuthContext';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
 
 const RootStack = () => {
+  const { isAuthorized } = useAuthContext();
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -30,16 +33,23 @@ const RootStack = () => {
           },
         }}
         //general screen
-        initialRouteName="Options"
+        initialRouteName="Signup"
       >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Options" component={Options} />
-        <Stack.Screen name="Terms" component={Terms} />
-        <Stack.Screen name="Privacy" component={Privacy} />
-        <Stack.Screen name="Calculator" component={Calculator} />
-        <Stack.Screen name="ContactUs" component={ContactUs} />
-        <Stack.Screen options={{ headerTintColor: primary }} name="Home" component={Home} />
+        {isAuthorized ? (
+          <Stack.Group>
+            <Stack.Screen options={{ headerTintColor: primary }} name="Home" component={Home} />
+            <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="Options" component={Options} />
+            <Stack.Screen name="Terms" component={Terms} />
+            <Stack.Screen name="Privacy" component={Privacy} />
+            <Stack.Screen name="Calculator" component={Calculator} />
+            <Stack.Screen name="ContactUs" component={ContactUs} />
+          </Stack.Group>
+        ) : (
+          <Stack.Group>
+            <Stack.Screen name="Login" component={Login} />
+          </Stack.Group>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import RootStack from './navigators/RootStack';
+import {AuthContextProvider} from './provider/AuthContext'
 
 export default function App() {
-  return <RootStack />;
+  return <AuthContextProvider> <RootStack /> </AuthContextProvider>;
 }

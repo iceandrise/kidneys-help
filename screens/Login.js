@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { Formik } from 'formik';
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import { Colors } from './../components/styles';
+import { useAuthContext } from '../provider/AuthContext';
 import {
   StyledContainer,
   InnerContainer,
@@ -30,6 +31,7 @@ import KeyboardSet from '../components/keyboardSet';
 
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
+  const { logIn } = useAuthContext();
 
   return (
     <KeyboardSet>
@@ -41,10 +43,11 @@ const Login = ({ navigation }) => {
           <SubTitle>Login</SubTitle>
 
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: 'rrr@gamil.com', password: '55rfff' }}
             onSubmit={(values) => {
-              console.log(values);
-              navigation.navigate('Home');
+                console.log(values);
+              //   navigation.navigate('Home');
+              logIn();
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
