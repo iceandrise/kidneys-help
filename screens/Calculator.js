@@ -1,7 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
 import {
   InnerContainer,
   PageTitle,

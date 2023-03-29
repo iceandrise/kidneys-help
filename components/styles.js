@@ -65,6 +65,17 @@ export const SubTitle = styled.Text`
     font-weight: normal;
 `}
 `;
+
+export const MainTitle = styled.Text`
+  font-size: 24px;
+  font-family: 'cursive';
+  margin-left: 15px;
+  position: absolute;
+  right:0;
+  font-weight: bold;
+  color: ${tertiary};
+`;
+
 export const StyledFormArea = styled.View`
   width: 90%;
 `;
@@ -158,6 +169,13 @@ export const TextLink = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
+
+export const SecTextLink = styled.TouchableOpacity`
+  justify-content: right;
+  right: 0;
+  margin-bottom: 20px;
+`;
+
 export const TextLinkContent = styled.Text`
   font-size: 15px;
   color: ${brand};
@@ -220,10 +238,18 @@ export const ItemsView = styled.View`
   flex-direction: row;
   width: 100%;
 `;
+
+export const TextView2 = styled.View`
+  flex-direction: block;
+  width: 70%;
+
+`;
+
 export const TextView = styled.View`
   flex-direction: block;
   width: 100%;
 `;
+
 
 export const ItemsViewDop = styled.View`
   justify-content: start;
@@ -243,10 +269,15 @@ export const CalcButtonText = styled.Text`
   font-size: 16px;
 `;
 
+export const ActButtonText = styled.Text`
+  color: ${lightback};
+  font-weight: bold;
+  font-size: 16px;
+`;
+
 export const StyledButtonCalc = styled.TouchableOpacity`
   border-width: 1px;
   border-color: ${brand};
-  // background-color: ${lightback};
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -254,6 +285,32 @@ export const StyledButtonCalc = styled.TouchableOpacity`
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
+`;
+
+
+export const StyledPatient = styled.TouchableOpacity`
+  border-width: 1px;
+  border-color: ${brand};
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const StyledButtonAct = styled.TouchableOpacity`
+  border-width: 1px;
+  border-color: ${lightback};
+  background-color: ${brand};
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 35px;
+  width: 40%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 export const StyledButtonPremium = styled.TouchableOpacity`

@@ -1,21 +1,18 @@
-
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
 import React, { useState } from 'react';
 import {
   InnerContainer,
   PageTitle,
-  SubTitle,
+  MainTitle,
   StyledFormArea,
-  StyledButton,
-  StyledButtonCalc,
+  TextContent,
   CalcButtonText,
-  StyledButtonPremium,
-  MsgBox,
-  StyledContainer,
-  MenuImage,
-  TextLink,
+  ActButtonText,
+  TextView2,
+  StyledPatient,
+  StyledButtonAct,
+  SecTextLink,
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
@@ -26,23 +23,35 @@ import { Searchbar } from 'react-native-paper';
 
 const Patients = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const onChangeSearch = query => setSearchQuery(query);
+  const onChangeSearch = (query) => setSearchQuery(query);
   return (
     <>
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+        <MainTitle>My patients</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
-        <PageTitle>Patients</PageTitle>
         <TextView>
-          <TextLink>+ Add new patient</TextLink>
-
-          <Searchbar 
-            placeholder="Search patient"
-            onChangeText={onChangeSearch}
-            value={searchQuery} />
+          <Searchbar placeholder="Search patient" onChangeText={onChangeSearch} value={searchQuery} />
         </TextView>
+
+        <StyledPatient onPress={() => navigation.navigate('InfoPatient')}>
+          <ItemsView>
+            <TextView2>
+              <CalcButtonText>Name Patient</CalcButtonText>
+              <CalcButtonText>00.00.0000</CalcButtonText>
+            </TextView2>
+            <TextView2>
+              <StyledButtonAct onPress={() => navigation.navigate('InfoPatient')}>
+                <ActButtonText>Edit</ActButtonText>
+              </StyledButtonAct>
+              <StyledButtonAct>
+                <ActButtonText>Delete</ActButtonText>
+              </StyledButtonAct>
+            </TextView2>
+          </ItemsView>
+        </StyledPatient>
       </WelcomeContainer2>
     </>
   );

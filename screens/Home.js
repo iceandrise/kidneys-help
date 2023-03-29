@@ -1,7 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import {
   InnerContainer,
@@ -37,7 +36,7 @@ const Home = ({ navigation }) => {
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')} />
             <MenuButtonText>Calculators</MenuButtonText>
           </StyledButtonMain>
-          <StyledButtonMain>
+          <StyledButtonMain onPress={() => navigation.navigate('Patients')}>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/patient.png')} />
             <MenuButtonText>My patients</MenuButtonText>
           </StyledButtonMain>
