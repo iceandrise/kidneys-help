@@ -65,6 +65,9 @@ const InfoPatient = ({ navigation }) => {
         <TextInput style={styles.numericInput} editable={false} value="Res4" />
         <TextInput style={styles.numericInput} editable={false} value="Res5" />
         <TextInput style={styles.numericInput} editable={false} value="Res6" />
+        <StyledButtonAct onPress={() => navigation.navigate('Chart')}>
+                <ActButtonText>See chart</ActButtonText>
+        </StyledButtonAct>
       </WelcomeContainer2>
     </>
   );

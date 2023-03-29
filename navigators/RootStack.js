@@ -10,6 +10,7 @@ import Privacy from '../screens/Privacy';
 import Calculator from '../screens/Calculator';
 import ContactUs from '../screens/ContactUs';
 import InfoPatient from '../screens/InfoPatient';
+import Chart from '../screens/Chart';
 import React from 'react';
 import { Colors } from './../components/styles';
 import { useAuthContext } from '../provider/AuthContext';
@@ -35,7 +36,7 @@ const RootStack = () => {
           },
         }}
         //general screen
-        initialRouteName="Options"
+        initialRouteName="InfoPatient"
       >
         {isAuthorized ? (
           <Stack.Group>
@@ -48,6 +49,7 @@ const RootStack = () => {
             <Stack.Screen name="Patients" component={Patients} />
             <Stack.Screen name="ContactUs" component={ContactUs} />
             <Stack.Screen name="InfoPatient" component={InfoPatient} />
+            <Stack.Screen name="Chart" component={Chart} />
           </Stack.Group>
         ) : (
           <Stack.Group>

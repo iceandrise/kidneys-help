@@ -204,6 +204,17 @@ export const WelcomeContainer2 = styled.View`
   padding: 40px;
   top: 40px;
 `;
+export const WelcomeContainer3 = styled.View`
+  flex: 1;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  background-color: ${lightback};
+  display: block;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  top: 40px;
+`;
 
 export const WelcomeImage = styled.Image`
   width: 50px;
