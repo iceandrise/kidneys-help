@@ -1,5 +1,6 @@
-import React from 'react';
+
 import { StatusBar } from 'expo-status-bar';
+import React, { useState, useContext } from 'react';
 import { View, Button, TouchableOpacity } from 'react-native';
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import {
@@ -21,16 +22,24 @@ import {
   Avatar,
   ItemsView,
 } from './../components/styles';
+import {EventRegister} from 'react-native-event-listeners';
+import themeContext from '../theme/themeContext';
+import theme from '../theme/theme';
+import { ThemeContext } from 'styled-components';
 
 const Home = ({ navigation }) => {
+  const theme =useContext(themeContext)
+  const [searchQuery, setSearchQuery] = useState('');
+  const onChangeSearch = (query) => setSearchQuery(query);
+  const [darkMode, setDarkMode]=useState(false)
   return (
     <>
       <StatusBar style="light" />
-      <WelcomeContainer>
+      <WelcomeContainer style={[{backgroundColor:theme.backgroundColor}]}>
         <MenuImage source={require('./../assets/image/menu.png')} />
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
       </WelcomeContainer>
-      <WelcomeContainer2>
+      <WelcomeContainer2 style={[{backgroundColor:theme.backgroundColor}]}>
         <ItemsView>
           <StyledButtonMain onPress={() => navigation.navigate('Calculator')}>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')} />

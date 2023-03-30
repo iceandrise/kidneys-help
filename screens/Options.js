@@ -20,7 +20,7 @@ const Options = ({ navigation }) => {
       <WelcomeContainer2>
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/setting.png')} />
-          <TextLink>
+          <TextLink onPress={() => navigation.navigate('Settings')}>
             <TextContent>Settings</TextContent>
           </TextLink>
         </ItemsViewDop>

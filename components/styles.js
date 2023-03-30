@@ -197,7 +197,6 @@ export const WelcomeContainer2 = styled.View`
   position: relative;
   align-items: center;
   width: 100%;
-  background-color: ${lightback};
   display: block;
   grid-template-columns: auto auto auto;
   justify-content: center;
@@ -280,6 +279,14 @@ export const CalcButtonText = styled.Text`
   font-size: 16px;
 `;
 
+export const SetButtonText = styled.Text`
+  color: ${brand};
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
 export const ActButtonText = styled.Text`
   color: ${lightback};
   font-weight: bold;
@@ -300,6 +307,18 @@ export const StyledButtonCalc = styled.TouchableOpacity`
 
 
 export const StyledPatient = styled.TouchableOpacity`
+  border-width: 1px;
+  border-color: ${brand};
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const FormAct = styled.View`
   border-width: 1px;
   border-color: ${brand};
   justify-content: center;
