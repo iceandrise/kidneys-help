@@ -8,6 +8,7 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
+  MainTitle,
 } from './../components/styles';
 
 const Privacy = ({ navigation }) => {
@@ -16,6 +17,7 @@ const Privacy = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+        <MainTitle>Privacy</MainTitle>
       </WelcomeContainer>
 
       <WelcomeContainer2>

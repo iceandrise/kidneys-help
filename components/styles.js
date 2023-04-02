@@ -293,6 +293,12 @@ export const ActButtonText = styled.Text`
   font-size: 16px;
 `;
 
+export const MoreButtonText = styled.Text`
+  color: ${brand};
+  font-weight: bold;
+  font-size: 16px;
+`;
+
 export const StyledButtonCalc = styled.TouchableOpacity`
   border-width: 1px;
   border-color: ${brand};
@@ -340,6 +346,15 @@ export const StyledButtonAct = styled.TouchableOpacity`
   height: 35px;
   width: 40%;
   margin-top: 5px;
+  margin-bottom: 5px;
+`;
+
+export const StyledButtonMore = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 40%;
+  margin-top: 10px;
   margin-bottom: 5px;
 `;
 

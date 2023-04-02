@@ -12,6 +12,7 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
+  MainTitle,
 } from './../components/styles';
 
 const ContactUs = ({ navigation }) => {
@@ -43,6 +44,7 @@ const ContactUs = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+        <MainTitle>Contact us</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>

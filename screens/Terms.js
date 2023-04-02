@@ -8,6 +8,7 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
+  MainTitle,
 } from './../components/styles';
 
 const Terms = ({ navigation }) => {
@@ -16,6 +17,7 @@ const Terms = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+        <MainTitle>Terms</MainTitle>
       </WelcomeContainer>
 
       <WelcomeContainer2>

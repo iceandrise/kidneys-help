@@ -1,4 +1,3 @@
-
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useContext } from 'react';
 import { View, Button, TouchableOpacity } from 'react-native';
@@ -8,7 +7,7 @@ import {
   PageTitle,
   SubTitle,
   StyledFormArea,
-  StyledButton,
+  StyledButtonMore,
   StyledButtonMain,
   MenuButtonText,
   Line,
@@ -19,27 +18,29 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
-  Avatar,
+  MoreButtonText,
   ItemsView,
 } from './../components/styles';
-import {EventRegister} from 'react-native-event-listeners';
+import { EventRegister } from 'react-native-event-listeners';
 import themeContext from '../theme/themeContext';
 import theme from '../theme/theme';
 import { ThemeContext } from 'styled-components';
 
 const Home = ({ navigation }) => {
-  const theme =useContext(themeContext)
+  const theme = useContext(themeContext);
   const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = (query) => setSearchQuery(query);
-  const [darkMode, setDarkMode]=useState(false)
+  const [darkMode, setDarkMode] = useState(false);
   return (
     <>
       <StatusBar style="light" />
-      <WelcomeContainer style={[{backgroundColor:theme.backgroundColor}]}>
-        <MenuImage source={require('./../assets/image/menu.png')} />
+      <WelcomeContainer style={[{ backgroundColor: theme.backgroundColor }]}>
+      <StyledButtonMore onPress={() => navigation.navigate('Options')}>
+          <MoreButtonText>More</MoreButtonText>
+        </StyledButtonMore>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
       </WelcomeContainer>
-      <WelcomeContainer2 style={[{backgroundColor:theme.backgroundColor}]}>
+      <WelcomeContainer2 style={[{ backgroundColor: theme.backgroundColor }]}>
         <ItemsView>
           <StyledButtonMain onPress={() => navigation.navigate('Calculator')}>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')} />
@@ -65,7 +66,7 @@ const Home = ({ navigation }) => {
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/info.png')} />
             <MenuButtonText>Help with app</MenuButtonText>
           </StyledButtonMain>
-          <StyledButtonMain>
+          <StyledButtonMain onPress={() => navigation.navigate('Payment')}>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/payment.png')} />
             <MenuButtonText>Payment</MenuButtonText>
           </StyledButtonMain>

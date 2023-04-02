@@ -17,7 +17,7 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
-  Avatar,
+  MainTitle,
   TextView,
 } from './../components/styles';
 
@@ -27,6 +27,7 @@ const Calculator = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+        <MainTitle>Calculators</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>
@@ -34,8 +35,8 @@ const Calculator = ({ navigation }) => {
           <SubTitle>Try for free!</SubTitle>
         </TextView>
 
-        <StyledButtonCalc>
-          <CalcButtonText>kt/V calculate</CalcButtonText>
+        <StyledButtonCalc onPress={() => navigation.navigate('TwucCalc')}>
+          <CalcButtonText>Total weekly urea clearance calculate</CalcButtonText>
         </StyledButtonCalc>
         <StyledButtonCalc>
           <CalcButtonText>* calculate</CalcButtonText>

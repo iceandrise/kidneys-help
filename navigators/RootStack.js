@@ -19,6 +19,8 @@ import { EventRegister } from 'react-native-event-listeners';
 import theme from '../theme/theme';
 import themeContext from '../theme/themeContext';
 import { DefaultTheme } from 'react-native-paper';
+import Payment from '../screens/Payment';
+import TwucCalc from '../screens/TwucCalc';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -52,7 +54,7 @@ const RootStack = () => {
           },
         }}
         //general screen
-        initialRouteName="Options"
+        initialRouteName="Home"
       >
         {isAuthorized ? (
           <Stack.Group>
@@ -67,6 +69,8 @@ const RootStack = () => {
             <Stack.Screen name="InfoPatient" component={InfoPatient} />
             <Stack.Screen name="Chart" component={Chart} />
             <Stack.Screen name="Settings" component={Settings} />
+            <Stack.Screen name="Payment" component={Payment} />
+            <Stack.Screen name="TwucCalc" component={TwucCalc} />
           </Stack.Group>
         ) : (
           <Stack.Group>
