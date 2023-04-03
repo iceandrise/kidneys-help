@@ -260,6 +260,11 @@ export const TextView = styled.View`
   width: 100%;
 `;
 
+export const TextView3 = styled.View`
+  flex-direction: row;
+  width: 100%;
+`;
+
 
 export const ItemsViewDop = styled.View`
   justify-content: start;
@@ -306,6 +311,18 @@ export const StyledButtonCalc = styled.TouchableOpacity`
   align-items: center;
   border-radius: 5px;
   height: 70px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const ResCalc = styled.TouchableOpacity`
+  border-width: 1px;
+  border-color: ${brand};
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 40px;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
