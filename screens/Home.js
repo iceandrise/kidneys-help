@@ -52,9 +52,9 @@ const Home = ({ navigation }) => {
           </StyledButtonMain>
         </ItemsView>
         <ItemsView>
-          <StyledButtonMain>
-            <WelcomeImage resizeMode="cover" source={require('./../assets/image/research.png')} />
-            <MenuButtonText>Dynamics</MenuButtonText>
+          <StyledButtonMain onPress={() => navigation.navigate('Premium')}>
+            <WelcomeImage resizeMode="cover" source={require('./../assets/image/premium.png')} />
+            <MenuButtonText>Premium</MenuButtonText>
           </StyledButtonMain>
           <StyledButtonMain>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/user.png')} />

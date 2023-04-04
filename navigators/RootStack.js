@@ -21,6 +21,7 @@ import themeContext from '../theme/themeContext';
 import { DefaultTheme } from 'react-native-paper';
 import Payment from '../screens/Payment';
 import TwucCalc from '../screens/TwucCalc';
+import Premium from '../screens/Premium';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -71,6 +72,7 @@ const RootStack = () => {
             <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Payment" component={Payment} />
             <Stack.Screen name="TwucCalc" component={TwucCalc} />
+            <Stack.Screen name="Premium" component={Premium} />
           </Stack.Group>
         ) : (
           <Stack.Group>

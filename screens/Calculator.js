@@ -12,8 +12,8 @@ import {
   StyledButtonPremium,
   MsgBox,
   StyledContainer,
-  MenuImage,
-  ActIcon,
+  TextLinkContent,
+  TextLink,
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
@@ -48,15 +48,10 @@ const Calculator = ({ navigation }) => {
           <CalcButtonText>*** calculate</CalcButtonText>
         </StyledButtonCalc>
         <TextView>
-          <PageTitle>Premium</PageTitle>
-          <SubTitle>Try premium calculators by only 10$!</SubTitle>
+        <TextLink onPress={() => navigation.navigate('Premium')}>
+          <TextLinkContent>Want more? Go to Premium calculators!</TextLinkContent>
+        </TextLink>
         </TextView>
-        <StyledButtonPremium>
-          <CalcButtonText>! calculate</CalcButtonText>
-        </StyledButtonPremium>
-        <StyledButtonPremium>
-          <CalcButtonText>!!! calculate</CalcButtonText>
-        </StyledButtonPremium>
       </WelcomeContainer2>
     </>
   );

@@ -220,6 +220,13 @@ export const WelcomeImage = styled.Image`
   height: 50px;
   margin: 10px;
 `;
+
+export const MainImage = styled.Image`
+  width: 250px;
+  height: 250px;
+  justify-content: center;
+`;
+
 export const WelcomeTitle = styled.Text`
   font-size: 25px;
   text-align: center;
@@ -260,9 +267,18 @@ export const TextView = styled.View`
   width: 100%;
 `;
 
+export const TextView5 = styled.View`
+  flex-direction: block;
+  margin: 5px;
+`;
+
 export const TextView3 = styled.View`
   flex-direction: row;
   width: 100%;
+`;
+
+export const TextView4 = styled.View`
+  flex-direction: row;
 `;
 
 
