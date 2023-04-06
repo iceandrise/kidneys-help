@@ -43,14 +43,14 @@ const Payment = ({ navigation }) => {
             <TextInput
               style={styles.input}
               maxLength={16}
-              keyboardType="numeric"
+              keyboardType="default"
               onChangeText={OnChangeCardNumber}
               value={cardNumber}
             />
           </TextView>
           <TextView>
             <CalcButtonText>CARD HOLDER</CalcButtonText>
-            <TextInput style={styles.input} maxLength={20} onChangeText={OnChangeCardHolder} value={cardHolder} />
+            <TextInput style={styles.input} keyboardType="default" maxLength={20} onChangeText={OnChangeCardHolder} value={cardHolder} />
           </TextView>
           </TextView>
           <TextView4>
@@ -59,7 +59,7 @@ const Payment = ({ navigation }) => {
             <TextInput
               style={styles.numInput}
               maxLength={2}
-              keyboardType="numeric"
+              keyboardType="number-pad"
               onChangeText={OnChangeMM}
               value={mm}
             />
@@ -69,7 +69,7 @@ const Payment = ({ navigation }) => {
             <TextInput
               style={styles.numInput}
               maxLength={2}
-              keyboardType="numeric"
+              keyboardType="number-pad"
               onChangeText={OnChangeYY}
               value={yy}
             />
@@ -79,7 +79,7 @@ const Payment = ({ navigation }) => {
             <TextInput
               style={styles.numInput}
               maxLength={3}
-              keyboardType="numeric"
+              keyboardType="number-pad"
               onChangeText={OnChangeCVV}
               value={cvv}
             />

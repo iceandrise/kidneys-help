@@ -93,7 +93,7 @@ const Diary = ({ navigation }) => {
             <TextInput
               style={styles.numericInput}
               maxLength={2}
-              keyboardType="numeric"
+              keyboardType="number-pad"
               onChangeText={OnChangeAge}
               value={age}
             />
