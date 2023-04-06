@@ -38,7 +38,7 @@ export const PageTitle = styled.Text`
   font-size: 40px;
   text-align: center;
   font-weight: normal;
-  font-family: 'cursive';
+  /* font-family: 'cursive'; */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: maroon;
   color: ${brand};
@@ -52,7 +52,7 @@ export const PageTitle = styled.Text`
 `;
 export const SubTitle = styled.Text`
   font-size: 18px;
-  font-family: 'cursive';
+  /* font-family: 'cursive'; */
   margin-bottom: 20px;
   letter-spacing: 1px;
   font-weight: bold;
@@ -68,10 +68,10 @@ export const SubTitle = styled.Text`
 
 export const MainTitle = styled.Text`
   font-size: 24px;
-  font-family: 'cursive';
+  /* font-family: 'cursive'; */
   margin-left: 15px;
   position: absolute;
-  right:0;
+  right: 0;
   font-weight: bold;
   color: ${tertiary};
 `;
@@ -170,12 +170,10 @@ export const TextLink = styled.TouchableOpacity`
   align-items: center;
 `;
 
-
 export const TextLink2 = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   padding: 10px;
-
 `;
 
 export const SecTextLink = styled.TouchableOpacity`
@@ -210,7 +208,6 @@ export const WelcomeContainer6 = styled.View`
   flex-direction: row;
   width: 100%;
   height: 40px;
-  position: absolute;
 `;
 
 export const WelcomeContainer2 = styled.View`
@@ -251,7 +248,7 @@ export const MainImage = styled.Image`
 export const WelcomeTitle = styled.Text`
   font-size: 25px;
   text-align: center;
-  font-family: 'cursive';
+  /* font-family: 'cursive'; */
   color: ${brand};
 `;
 export const MenuImage = styled.Image`
@@ -280,7 +277,6 @@ export const StyledMore = styled.TouchableOpacity`
   height: 20px;
   width: 40px;
   margin-top: 10px;
-
 `;
 
 export const ItemsView = styled.View`
@@ -292,7 +288,6 @@ export const ItemsView = styled.View`
 export const TextView2 = styled.View`
   flex-direction: block;
   width: 70%;
-
 `;
 
 export const TextView = styled.View`
@@ -313,7 +308,6 @@ export const TextView3 = styled.View`
 export const TextView4 = styled.View`
   flex-direction: row;
 `;
-
 
 export const ItemsViewDop = styled.View`
   justify-content: start;
@@ -376,7 +370,6 @@ export const ResCalc = styled.TouchableOpacity`
   margin-top: 20px;
   margin-bottom: 20px;
 `;
-
 
 export const StyledPatient = styled.TouchableOpacity`
   border-width: 1px;

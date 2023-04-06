@@ -8,8 +8,10 @@ import {
   WelcomeContainer2,
   WelcomeImage,
 } from './../components/styles';
+import { useAuthContext } from '../provider/AuthContext';
 
 const Options = ({ navigation }) => {
+  const { logOut } = useAuthContext();
   return (
     <>
       <StatusBar style="light" />
@@ -44,7 +46,7 @@ const Options = ({ navigation }) => {
         </ItemsViewDop>
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/logout.png')} />
-          <TextLink onPress={() => navigation.navigate('Login')}>
+          <TextLink onPress={() => logOut()}>
             <TextContent>Logout</TextContent>
           </TextLink>
         </ItemsViewDop>

@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import app from '../firebaseConfig';
 
 export const AuthContext = createContext(undefined);
 export const useAuthContext = () => {
@@ -10,18 +12,53 @@ export const useAuthContext = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [isAuthorized, setIsAuthorized] = useState(true);
-  const logOut = () => setIsAuthorized(false);
-  const logIn = () => {
-    console.log(isAuthorized)
-    setIsAuthorized(true)};
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState();
+  const auth = getAuth(app);
+  const logOut = async () => {
+    setLoading(true);
+    try {
+      signOut(auth);
+    } catch (error) {
+      console.log('logOut', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const logIn = async (value, onSuccess) => {
+    try {
+      console.log('logIn');
+      await signInWithEmailAndPassword(auth, value.email, value.password);
+      onSuccess();
+    } catch (error) {
+      console.log(error);
+      setUser(undefined);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribeFromAuthStatusChanged = onAuthStateChanged(auth, (user) => {
+      console.log('stateChanged');
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(undefined);
+      }
+    });
+
+    return unsubscribeFromAuthStatusChanged;
+  }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        isAuthorized,
+        isAuthorized: Boolean(user),
+        user,
         logIn,
         logOut,
+        loading,
       }}
     >
       {children}
