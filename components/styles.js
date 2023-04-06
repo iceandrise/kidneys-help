@@ -170,6 +170,14 @@ export const TextLink = styled.TouchableOpacity`
   align-items: center;
 `;
 
+
+export const TextLink2 = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+`;
+
 export const SecTextLink = styled.TouchableOpacity`
   justify-content: right;
   right: 0;
@@ -178,6 +186,11 @@ export const SecTextLink = styled.TouchableOpacity`
 
 export const TextLinkContent = styled.Text`
   font-size: 15px;
+  color: ${brand};
+`;
+
+export const TextLinkContent2 = styled.Text`
+  font-size: 20px;
   color: ${brand};
 `;
 
@@ -192,6 +205,14 @@ export const WelcomeContainer = styled.View`
   width: 100%;
   position: absolute;
 `;
+export const WelcomeContainer6 = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  position: absolute;
+`;
+
 export const WelcomeContainer2 = styled.View`
   flex: 1;
   position: relative;
@@ -250,6 +271,18 @@ export const StyledButtonMain = styled.TouchableOpacity`
   margin-top: 20px;
   margin-bottom: 20px;
 `;
+
+export const StyledMore = styled.TouchableOpacity`
+  border-width: 1px;
+  border-color: ${brand};
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 40px;
+  margin-top: 10px;
+
+`;
+
 export const ItemsView = styled.View`
   justify-content: space-between;
   flex-direction: row;
@@ -379,15 +412,6 @@ export const StyledButtonAct = styled.TouchableOpacity`
   height: 35px;
   width: 40%;
   margin-top: 5px;
-  margin-bottom: 5px;
-`;
-
-export const StyledButtonMore = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-  width: 40%;
-  margin-top: 10px;
   margin-bottom: 5px;
 `;
 

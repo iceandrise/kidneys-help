@@ -45,29 +45,11 @@ const InfoPatient = ({ navigation }) => {
         <TextInput style={styles.input} onChangeText={OnChangeSurname} value={surname} />
         <TextInput style={styles.input} onChangeText={OnChangeName} value={name} />
         <TextInput style={styles.numericInput} onChangeText={OnChangeRoom} value={room} />
-        <TextInput style={styles.numericInput} onChangeText={OnChangeAge} value={age} />
-        <StyledButtonAct disabled={isDisabled}>
-          <ActButtonText>Save</ActButtonText>
-        </StyledButtonAct>
-        <SubTitle>You can't change this parameters, because they depend on readings.</SubTitle>
-        <TextLink onPress={() => navigation.navigate('Calculator')}>
-          <TextLinkContent>Go to Calculator page</TextLinkContent>
-        </TextLink>
-        <TextInput style={styles.numericInput} editable={false} value="Height" />
-        <TextInput style={styles.numericInput} editable={false} value="Width" />
+
+        <TextInput style={styles.numericInput} editable={false} value="Duration" />
         <TextInput style={styles.numericInput} editable={false} value="Sex" />
-        <TextInput style={styles.numericInput} editable={false} value="Preasure" />
         <TextInput style={styles.numericInput} editable={false} value="Water" />
-        <TextInput style={styles.numericInput} editable={false} value="Glucose" />
         <TextInput style={styles.numericInput} editable={false} value="Res1" />
-        <TextInput style={styles.numericInput} editable={false} value="Res2" />
-        <TextInput style={styles.numericInput} editable={false} value="Res3" />
-        <TextInput style={styles.numericInput} editable={false} value="Res4" />
-        <TextInput style={styles.numericInput} editable={false} value="Res5" />
-        <TextInput style={styles.numericInput} editable={false} value="Res6" />
-        <StyledButtonAct onPress={() => navigation.navigate('Chart')}>
-                <ActButtonText>See chart</ActButtonText>
-        </StyledButtonAct>
       </WelcomeContainer2>
     </>
   );

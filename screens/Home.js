@@ -11,11 +11,11 @@ import {
   StyledButtonMain,
   MenuButtonText,
   Line,
-  MsgBox,
-  StyledContainer,
-  MenuImage,
+  TextLinkContent2,
+  StyledMore,
+  TextLink2,
   ActIcon,
-  WelcomeContainer,
+  WelcomeContainer6,
   WelcomeContainer2,
   WelcomeImage,
   MoreButtonText,
@@ -33,13 +33,13 @@ const Home = ({ navigation }) => {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <>
-      <StatusBar style="light" />
-      <WelcomeContainer style={[{ backgroundColor: theme.backgroundColor }]}>
-      <StyledButtonMore onPress={() => navigation.navigate('Options')}>
-          <MoreButtonText>More</MoreButtonText>
-        </StyledButtonMore>
+
+      <WelcomeContainer6 style={[{ backgroundColor: theme.backgroundColor }]}>
+      <TextLink2 onPress={() => navigation.navigate('Options')}>
+          <TextLinkContent2>More</TextLinkContent2>
+        </TextLink2>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-      </WelcomeContainer>
+      </WelcomeContainer6>
       <WelcomeContainer2 style={[{ backgroundColor: theme.backgroundColor }]}>
         <ItemsView>
           <StyledButtonMain onPress={() => navigation.navigate('Calculator')}>
@@ -56,9 +56,9 @@ const Home = ({ navigation }) => {
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/premium.png')} />
             <MenuButtonText>Premium</MenuButtonText>
           </StyledButtonMain>
-          <StyledButtonMain>
-            <WelcomeImage resizeMode="cover" source={require('./../assets/image/user.png')} />
-            <MenuButtonText>Personal Info</MenuButtonText>
+          <StyledButtonMain onPress={() => navigation.navigate('Diary')}>
+            <WelcomeImage resizeMode="cover" source={require('./../assets/image/book.png')} />
+            <MenuButtonText>Patient's diary</MenuButtonText>
           </StyledButtonMain>
         </ItemsView>
         <ItemsView>

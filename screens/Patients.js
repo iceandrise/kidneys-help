@@ -40,12 +40,9 @@ const Patients = ({ navigation }) => {
           <ItemsView>
             <TextView2>
               <CalcButtonText>Name Patient</CalcButtonText>
-              <CalcButtonText>00.00.0000</CalcButtonText>
+              <CalcButtonText>221</CalcButtonText>
             </TextView2>
             <TextView2>
-              <StyledButtonAct onPress={() => navigation.navigate('InfoPatient')}>
-                <ActButtonText>Edit</ActButtonText>
-              </StyledButtonAct>
               <StyledButtonAct>
                 <ActButtonText>Delete</ActButtonText>
               </StyledButtonAct>

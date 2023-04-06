@@ -34,9 +34,9 @@ const TwucCalc = ({ navigation }) => {
   const [widthP, OnChangeWidth] = useState('');
   const [sexType, OnChangeSextype] = useState(0);
   const [period, OnChangePeriod] = useState(0);
-  const [name, OnChangeName] = useState('Name of patient');
-  const [surname, OnChangeSurname] = useState('Surname of patient');
-  const [room, OnChangeRoom] = useState('Room');
+  const [name, OnChangeName] = useState('');
+  const [surname, OnChangeSurname] = useState('');
+  const [room, OnChangeRoom] = useState('');
 
   let eqClearance = singlePool * (durationHemo / (durationHemo + 30.7));
   let perem = Math.pow(Math.exp, -1 * eqClearance);
@@ -70,6 +70,8 @@ const TwucCalc = ({ navigation }) => {
   let stWeeklyClearance = cNativeClearance * (10080 / distributionUrea);
   let twucClearance = stWeeklyClearance + stDiaClearance;
 
+  
+
   return (
     <>
       <StatusBar style="light" />
@@ -78,15 +80,42 @@ const TwucCalc = ({ navigation }) => {
         <MainTitle>TwucCalc</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
-        <TextInput style={styles.input} onChangeText={OnChangeSurname} value={surname} />
-        <TextInput style={styles.input} onChangeText={OnChangeName} value={name} />
-        <TextInput style={styles.numericInput} onChangeText={OnChangeRoom} value={room} />
+        <TextView>
+          <CalcButtonText>Surame</CalcButtonText>
+          <TextInput
+            style={styles.input}
+            maxLength={15}
+            keyboardType="default"
+            onChangeText={OnChangeSurname}
+            value={surname}
+          />
+        </TextView>
+        <TextView>
+          <CalcButtonText>Name</CalcButtonText>
+          <TextInput
+            style={styles.input}
+            maxLength={15}
+            keyboardType="default"
+            onChangeText={OnChangeName}
+            value={name}
+          />
+        </TextView>
+        <TextView>
+          <CalcButtonText>Room</CalcButtonText>
+          <TextInput
+            style={styles.numericInput}
+            maxLength={5}
+            keyboardType="number-pad"
+            onChangeText={OnChangeRoom}
+            value={room}
+          />
+        </TextView>
         <TextView>
           <CalcButtonText>Single pool kt/V</CalcButtonText>
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeSinglePool}
             value={singlePool}
           />
@@ -96,7 +125,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeDurationHemo}
             value={durationHemo}
           />
@@ -106,7 +135,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeFrequencySessions}
             value={frequencySesions}
           />
@@ -116,7 +145,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeDailyVolume}
             value={dailyVolume}
           />
@@ -126,7 +155,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeFluidIntake}
             value={fluidIntake}
           />
@@ -136,7 +165,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeUrineUrea}
             value={urineUrea}
           />
@@ -146,7 +175,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={10}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeUreaBlood}
             value={ureaBlood}
           />
@@ -167,7 +196,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.numericInput}
             maxLength={2}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeAge}
             value={age}
           />
@@ -177,7 +206,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.numericInput}
             maxLength={3}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeHeight}
             value={heightP}
           />
@@ -187,7 +216,7 @@ const TwucCalc = ({ navigation }) => {
           <TextInput
             style={styles.numericInput}
             maxLength={3}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             onChangeText={OnChangeWidth}
             value={widthP}
           />
