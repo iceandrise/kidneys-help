@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 import {
   InnerContainer,
   PageTitle,
@@ -79,16 +79,16 @@ const Diary = ({ navigation }) => {
             <CalcButtonText>Liquid consumed</CalcButtonText>
           </TextView4>
           <StyledButtonAct>
-              <ActButtonText>Add</ActButtonText>
-            </StyledButtonAct>
-          <DropDownPicker
+            <ActButtonText>Add</ActButtonText>
+          </StyledButtonAct>
+          {/* <DropDownPicker
             open={open}
             value={value}
             items={items}
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
-          />
+          /> */}
           <TextView>
             <TextInput
               style={styles.numericInput}

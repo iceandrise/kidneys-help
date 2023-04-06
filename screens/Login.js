@@ -43,11 +43,10 @@ const Login = ({ navigation }) => {
           <SubTitle>Login</SubTitle>
 
           <Formik
-            initialValues={{ email: 'rrr@gamil.com', password: '55rfff' }}
+            initialValues={{ email: 'TestHelper@gamil.com', password: '9999999' }}
             onSubmit={(values) => {
-                console.log(values);
-              //   navigation.navigate('Home');
-              logIn();
+              console.log(values);
+              logIn(values, () => navigation.navigate('Home'));
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (

@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
+import { Ionicons, Octicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 import { Formik } from 'formik';
-import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
-import { Colors } from './../components/styles';
-import CountryPicker from 'react-native-country-picker-modal';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import KeyboardSet from '../components/keyboardSet';
 import {
-  StyledContainer,
-  InnerContainer,
-  PageLogo,
-  PageTitle,
-  SubTitle,
-  StyledFormArea,
-  StyledInputLabel,
-  LeftIcon,
-  RightIcon,
-  StyledTextInput,
-  StyledButton,
   ButtonText,
-  MsgBox,
-  Line,
+  Colors,
   ExtraText,
   ExtraView,
+  InnerContainer,
+  LeftIcon,
+  Line,
+  MsgBox,
+  PageTitle,
+  RightIcon,
+  StyledButton,
+  StyledContainer,
+  StyledFormArea,
+  StyledInputLabel,
+  StyledTextInput,
+  SubTitle,
   TextLink,
   TextLinkContent,
 } from './../components/styles';
 
 const { brand, darkLight, primary } = Colors;
-import KeyboardSet from '../components/keyboardSet';
 
 const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
