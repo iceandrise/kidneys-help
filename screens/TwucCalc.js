@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { View, Button, SafeAreaView, StyleSheet, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import {
   SubTitle,
@@ -12,12 +12,13 @@ import {
   ActButtonText,
   StyledButtonAct,
   TextView,
-  WelcomeContainer,
+  WelcomeContainer6,
   WelcomeContainer2,
   WelcomeImage,
   ItemsView,
 } from './../components/styles';
 import { Searchbar } from 'react-native-paper';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const TwucCalc = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,9 +35,12 @@ const TwucCalc = ({ navigation }) => {
   const [widthP, OnChangeWidth] = useState('');
   const [sexType, OnChangeSextype] = useState(0);
   const [period, OnChangePeriod] = useState(0);
-  const [name, OnChangeName] = useState('');
-  const [surname, OnChangeSurname] = useState('');
-  const [room, OnChangeRoom] = useState('');
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Patient1', value: 'p1' },
+    { label: 'Patient2', value: 'p2' },
+  ]);
 
   let eqClearance = singlePool * (durationHemo / (durationHemo + 30.7));
   let perem = Math.pow(Math.exp, -1 * eqClearance);
@@ -73,41 +77,22 @@ const TwucCalc = ({ navigation }) => {
   
 
   return (
-    <>
-      <StatusBar style="light" />
-      <WelcomeContainer>
+    <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
+      <WelcomeContainer6>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
         <MainTitle>TwucCalc</MainTitle>
-      </WelcomeContainer>
+      </WelcomeContainer6>
+      <>
       <WelcomeContainer2>
         <TextView>
-          <CalcButtonText>Surame</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={15}
-            keyboardType="default"
-            onChangeText={OnChangeSurname}
-            value={surname}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Name</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={15}
-            keyboardType="default"
-            onChangeText={OnChangeName}
-            value={name}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Room</CalcButtonText>
-          <TextInput
-            style={styles.numericInput}
-            maxLength={5}
-            keyboardType="number-pad"
-            onChangeText={OnChangeRoom}
-            value={room}
+        <CalcButtonText>Choose patient:</CalcButtonText>
+        <DropDownPicker
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
           />
         </TextView>
         <TextView>
@@ -268,8 +253,12 @@ const TwucCalc = ({ navigation }) => {
             <MenuButtonText>Clear</MenuButtonText>
           </ResCalc>
         </TextView>
+       
       </WelcomeContainer2>
-    </>
+      </>
+      </SafeAreaView>
+    
+    
   );
 };
 const styles = StyleSheet.create({

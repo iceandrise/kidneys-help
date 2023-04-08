@@ -56,7 +56,7 @@ const RootStack = () => {
             },
           }}
           //general screen
-          initialRouteName="Home"
+          initialRouteName="Login"
         >
           {isAuthorized ? (
             <Stack.Group>

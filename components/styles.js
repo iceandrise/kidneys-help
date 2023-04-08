@@ -173,7 +173,6 @@ export const TextLink = styled.TouchableOpacity`
 export const TextLink2 = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
-  padding: 10px;
 `;
 
 export const SecTextLink = styled.TouchableOpacity`
@@ -204,10 +203,12 @@ export const WelcomeContainer = styled.View`
   position: absolute;
 `;
 export const WelcomeContainer6 = styled.View`
-  justify-content: space-between;
-  flex-direction: row;
-  width: 100%;
-  height: 40px;
+justify-content: space-between;
+flex-direction: row;
+width: 100%;
+ position: relative;
+ display: flex;
+
 `;
 
 export const WelcomeContainer2 = styled.View`
@@ -215,11 +216,10 @@ export const WelcomeContainer2 = styled.View`
   position: relative;
   align-items: center;
   width: 100%;
-  display: block;
-  grid-template-columns: auto auto auto;
+  display: flex;
   justify-content: center;
-  padding: 40px;
-  top: 40px;
+  padding: 20px;
+  
 `;
 export const WelcomeContainer3 = styled.View`
   flex: 1;
