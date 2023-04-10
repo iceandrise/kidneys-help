@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import {
   PageTitle,
   TextContent,
-  TextLink,
-  WelcomeContainer,
+  TextLink2,
+  WelcomeContainer6,
   WelcomeContainer2,
   WelcomeImage,
   MainTitle,
@@ -14,15 +14,15 @@ import {
 const Terms = ({ navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never" bounces={false}>
-      <StatusBar style="light" />
-      <WelcomeContainer>
+      <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
+      <WelcomeContainer6>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
         <MainTitle>Terms</MainTitle>
-      </WelcomeContainer>
-
+      </WelcomeContainer6>
+      <>
       <WelcomeContainer2>
         <PageTitle>Terms and conditions</PageTitle>
-        <TextLink>
+        <TextLink2>
           <TextContent>
             1. GENERAL TERMS AND CONDITIONS Thank you for visiting KidneysHelp. Please read the Terms and Conditions
             contained herein carefully as any use of this site and all services constitutes your acceptance of the Terms
@@ -111,9 +111,12 @@ const Terms = ({ navigation }) => {
             loss that you may incur as a result of someone else using your account, either with or without your
             knowledge.
           </TextContent>
-        </TextLink>
+        </TextLink2>
       </WelcomeContainer2>
+      </>
+      </SafeAreaView>
     </ScrollView>
+   
   );
 };
 

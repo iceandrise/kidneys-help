@@ -35,14 +35,14 @@ export const PageLogo = styled.Image`
   height: 70px;
 `;
 export const PageTitle = styled.Text`
-  font-size: 40px;
+  font-size: 32px;
   text-align: center;
   font-weight: normal;
   /* font-family: 'cursive'; */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: maroon;
   color: ${brand};
-  padding: 10px;
+  // padding: 10px;
 
   ${(props) =>
     props.welcome &&
@@ -193,6 +193,7 @@ export const TextLinkContent2 = styled.Text`
 
 export const TextContent = styled.Text`
   font-size: 18px;
+  padding: 10px;
   color: ${brand};
 `;
 
@@ -216,9 +217,10 @@ export const WelcomeContainer2 = styled.View`
   position: relative;
   align-items: center;
   width: 100%;
-  display: flex;
+  display: block;
   justify-content: center;
   padding: 20px;
+  top: 40px;
   
 `;
 export const WelcomeContainer3 = styled.View`

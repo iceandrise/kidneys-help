@@ -40,7 +40,8 @@
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.9",
     "stripe": "^11.17.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

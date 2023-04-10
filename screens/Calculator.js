@@ -44,9 +44,6 @@ const Calculator = ({ navigation }) => {
         <StyledButtonCalc>
           <CalcButtonText>** calculate</CalcButtonText>
         </StyledButtonCalc>
-        <StyledButtonCalc>
-          <CalcButtonText>*** calculate</CalcButtonText>
-        </StyledButtonCalc>
         <TextView>
         <TextLink onPress={() => navigation.navigate('Premium')}>
           <TextLinkContent>Want more? Go to Premium calculators!</TextLinkContent>

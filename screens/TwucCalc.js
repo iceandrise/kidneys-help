@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Button, SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, StyleSheet, TextInput, Alert } from 'react-native';
 import React, { useState } from 'react';
+import { RadioButton } from 'react-native-paper';
 import {
   SubTitle,
   TextView3,
@@ -18,23 +19,80 @@ import {
   ItemsView,
 } from './../components/styles';
 import { Searchbar } from 'react-native-paper';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
+
+const SignUpSchema = Yup.object().shape({
+  singlePool: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  durationHemo: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  frequencySesions: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  dailyVolume: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  fluidIntake: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  urineUrea: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  ureaBlood: Yup.string()
+    .min(3)
+    .max(10)
+    .required('Enter a correct number')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  age: Yup.string()
+    .min(1)
+    .max(2)
+    .required('Enter a correct age')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  heightP: Yup.string()
+    .min(2)
+    .max(3)
+    .required('Enter a correct height')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+  widthP: Yup.string()
+    .min(2)
+    .max(3)
+    .required('Enter a correct weight')
+    .matches(/^[0-9].$/, 'Must be only digits'),
+});
 
 const TwucCalc = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const onChangeSearch = (query) => setSearchQuery(query);
-  const [singlePool, OnChangeSinglePool] = useState('');
-  const [durationHemo, OnChangeDurationHemo] = useState('');
-  const [frequencySesions, OnChangeFrequencySessions] = useState('');
-  const [dailyVolume, OnChangeDailyVolume] = useState('');
-  const [fluidIntake, OnChangeFluidIntake] = useState('');
-  const [urineUrea, OnChangeUrineUrea] = useState('');
-  const [ureaBlood, OnChangeUreaBlood] = useState('');
-  const [age, OnChangeAge] = useState('');
-  const [heightP, OnChangeHeight] = useState('');
-  const [widthP, OnChangeWidth] = useState('');
-  const [sexType, OnChangeSextype] = useState(0);
-  const [period, OnChangePeriod] = useState(0);
+  //   const onChangeSearch = (query) => setSearchQuery(query);
+    const [singlePool, OnChangeSinglePool] = useState('');
+    const [durationHemo, OnChangeDurationHemo] = useState('');
+    const [frequencySesions, OnChangeFrequencySessions] = useState('');
+    const [dailyVolume, OnChangeDailyVolume] = useState('');
+    const [fluidIntake, OnChangeFluidIntake] = useState('');
+    const [urineUrea, OnChangeUrineUrea] = useState('');
+    const [ureaBlood, OnChangeUreaBlood] = useState('');
+    const [age, OnChangeAge] = useState('');
+    const [heightP, OnChangeHeight] = useState('');
+    const [widthP, OnChangeWidth] = useState('');
+    const [sexType, OnChangeSextype] = useState(0);
+    const [period, OnChangePeriod] = useState(0);
+  const [checked, setChecked] = useState('short');
+  const [checked1, setChecked1] = useState('male');
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -74,191 +132,259 @@ const TwucCalc = ({ navigation }) => {
   let stWeeklyClearance = cNativeClearance * (10080 / distributionUrea);
   let twucClearance = stWeeklyClearance + stDiaClearance;
 
-  
-
   return (
-    <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
-      <WelcomeContainer6>
-        <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>TwucCalc</MainTitle>
-      </WelcomeContainer6>
-      <>
-      <WelcomeContainer2>
-        <TextView>
-        <CalcButtonText>Choose patient:</CalcButtonText>
-        <DropDownPicker
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Single pool kt/V</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeSinglePool}
-            value={singlePool}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Duration of hemodialysis session (min)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeDurationHemo}
-            value={durationHemo}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Frequency of hemodialysis sessions per week (times)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeFrequencySessions}
-            value={frequencySesions}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Daily urine volume (l)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeDailyVolume}
-            value={dailyVolume}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Weekly fluid intake (l)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeFluidIntake}
-            value={fluidIntake}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Urine urea consentration (mmol/l)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeUrineUrea}
-            value={urineUrea}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Urea content in blood plasmabefore hemodialysis (mmol/l)</CalcButtonText>
-          <TextInput
-            style={styles.input}
-            maxLength={10}
-            keyboardType="number-pad"
-            onChangeText={OnChangeUreaBlood}
-            value={ureaBlood}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Metdyalisis period (in days)</CalcButtonText>
-          <TextView3>
-            <StyledButtonAct>
-              <ActButtonText>Short</ActButtonText>
-            </StyledButtonAct>
-            <StyledButtonAct>
-              <ActButtonText>Long</ActButtonText>
-            </StyledButtonAct>
-          </TextView3>
-        </TextView>
-        <TextView>
-          <CalcButtonText>Age</CalcButtonText>
-          <TextInput
-            style={styles.numericInput}
-            maxLength={2}
-            keyboardType="number-pad"
-            onChangeText={OnChangeAge}
-            value={age}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Height</CalcButtonText>
-          <TextInput
-            style={styles.numericInput}
-            maxLength={3}
-            keyboardType="number-pad"
-            onChangeText={OnChangeHeight}
-            value={heightP}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Width</CalcButtonText>
-          <TextInput
-            style={styles.numericInput}
-            maxLength={3}
-            keyboardType="number-pad"
-            onChangeText={OnChangeWidth}
-            value={widthP}
-          />
-        </TextView>
-        <TextView>
-          <CalcButtonText>Sex</CalcButtonText>
-          <TextView3>
-            <StyledButtonAct>
-              <ActButtonText>Male</ActButtonText>
-            </StyledButtonAct>
-            <StyledButtonAct>
-              <ActButtonText>Female</ActButtonText>
-            </StyledButtonAct>
-          </TextView3>
-        </TextView>
-        <ResCalc>
-          <MenuButtonText>See results</MenuButtonText>
-        </ResCalc>
-        <TextView>
-          <SubTitle>Results:</SubTitle>
-          <CalcButtonText>Equilibrated clearance (ekt/V)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={eqClearance} />
-          <CalcButtonText>Standart weekly clearance (stdkt/V)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={stClearance} />
-          <CalcButtonText>Standart weekly clearance dializer (stdkt/V(dialysis))</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={stDiaClearance} />
-          <CalcButtonText>Native renal clearance of urea (KRU) (ml/min)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={nativeClearance} />
-          <CalcButtonText>Corrected native renal clearance of urea (aKRU)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={cNativeClearance} />
-          <CalcButtonText>Standart weekly renal clearance (stdkt/V(renal))</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={stWeeklyClearance} />
-          <CalcButtonText>Total weekly urea clearance (dializer+renal)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={twucClearance} />
+    <ScrollView showsVerticalScrollIndicator={false} overScrollMode="never" bounces={false}>
+    <Formik
+      initialValues={{
+        singlePool: '',
+        durationHemo: '',
+        frequencySesions: '',
+        dailyVolume: '',
+        fluidIntake: '',
+        urineUrea: '',
+        ureaBlood: '',
+        age: '',
+        heightP: '',
+        widthP: '',
+      }}
+      validationSchema={SignUpSchema}
+      onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+    >
+      {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
+        <SafeAreaView style={{ flex:1, paddingLeft: 24 }}>
+          <WelcomeContainer6>
+            <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+            <MainTitle>TwucCalc</MainTitle>
+          </WelcomeContainer6>
+          <>
+            <WelcomeContainer2>
+              <TextView>
+                <CalcButtonText>Choose patient:</CalcButtonText>
+                <DropDownPicker
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                />
+              </TextView>
 
-          <SubTitle>Optional results:</SubTitle>
-          <CalcButtonText>Adjusted weekly urine volume (l)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={wUrineVolume} />
-          <CalcButtonText>Volume of fluid remove during hemodialysis sessions per week (l)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={removeFluid} />
-          <CalcButtonText>Volume of distribution of urea (l)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={distributionUrea} />
-          <CalcButtonText>Corrected plasma urea (mmol/l)</CalcButtonText>
-          <TextInput style={styles.numericInput} editable={false} value={cPlasmaUrea} />
-          <ResCalc>
-            <MenuButtonText>Save</MenuButtonText>
-          </ResCalc>
-          <ResCalc>
-            <MenuButtonText>Clear</MenuButtonText>
-          </ResCalc>
-        </TextView>
-       
-      </WelcomeContainer2>
-      </>
-      </SafeAreaView>
-    
-    
+              <TextView>
+                <CalcButtonText>Single pool kt/V</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('singlePool')}
+                  value={values.singlePool}
+                  onBlur={() => setFieldTouched('singlePool')}
+                 
+                />
+                {touched.singlePool && errors.singlePool && <Text style={styles.errorTxt}>{errors.singlePool}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Duration of hemodialysis session (min)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('durationHemo')}
+                  value={values.durationHemo}
+                  onBlur={() => setFieldTouched('durationHemo')}
+                  
+                />
+                {touched.durationHemo && errors.durationHemo && (
+                  <Text style={styles.errorTxt}>{errors.durationHemo}</Text>
+                )}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Frequency of hemodialysis sessions per week (times)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('frequencySession')}
+                  value={values.frequencySesions}
+                  onBlur={() => setFieldTouched('frequencySession')}
+                 
+                />
+                {touched.frequencySesions && errors.frequencySesions && (
+                  <Text style={styles.errorTxt}>{errors.frequencySesions}</Text>
+                )}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Daily urine volume (l)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('dailyVolume')}
+                  value={values.dailyVolume}
+                  onBlur={() => setFieldTouched('dailyVolume')}
+                
+                />
+                {touched.dailyVolume && errors.dailyVolume && <Text style={styles.errorTxt}>{errors.dailyVolume}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Weekly fluid intake (l)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('fluidIntake')}
+                  value={values.fluidIntake}
+                  onBlur={() => setFieldTouched('fluidIntake')}
+                  
+                />
+                {touched.fluidIntake && errors.fluidIntake && <Text style={styles.errorTxt}>{errors.fluidIntake}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Urine urea consentration (mmol/l)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('urineUrea')}
+                  value={values.urineUrea}
+                  onBlur={() => setFieldTouched('urineUrea')}
+                
+                />
+                {touched.urineUrea && errors.urineUrea && <Text style={styles.errorTxt}>{errors.urineUrea}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Urea content in blood plasmabefore hemodialysis (mmol/l)</CalcButtonText>
+                <TextInput
+                  style={styles.input}
+                  maxLength={10}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('ureaBlood')}
+                  value={values.ureaBlood}
+                  onBlur={() => setFieldTouched('ureaBlood')}
+                
+                />
+                {touched.ureaBlood && errors.ureaBlood && <Text style={styles.errorTxt}>{errors.ureaBlood}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Metdyalisis period (in days)</CalcButtonText>
+                <TextView3>
+                  <CalcButtonText>Short</CalcButtonText>
+                  <RadioButton
+                    value={"short"}
+                    status={checked === 'short' ? 'checked' : 'unchecked'}
+                    onPress={() => setChecked('short')}
+                  />
+                  <CalcButtonText>Long</CalcButtonText>
+                  <RadioButton
+                    value={"long"}
+                    status={checked === 'long' ? 'checked' : 'unchecked'}
+                    onPress={() => setChecked('long')}
+                  />
+                </TextView3>
+              </TextView>
+              <TextView>
+                <CalcButtonText>Age</CalcButtonText>
+                <TextInput
+                  style={styles.numericInput}
+                  maxLength={2}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('age')}
+                  value={values.age}
+                  onBlur={() => setFieldTouched('age')}
+                
+                />
+                {touched.age && errors.age && <Text style={styles.errorTxt}>{errors.age}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Height</CalcButtonText>
+                <TextInput
+                  style={styles.numericInput}
+                  maxLength={3}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('heightP')}
+                  value={values.heightP}
+                  onBlur={() => setFieldTouched('heightP')}
+                
+                />
+                {touched.heightP && errors.heightP && <Text style={styles.errorTxt}>{errors.heightP}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Width</CalcButtonText>
+                <TextInput
+                  style={styles.numericInput}
+                  maxLength={3}
+                  keyboardType="number-pad"
+                  onChangeText={handleChange('widthP')}
+                  value={values.widthP}
+                  onBlur={() => setFieldTouched('widthP')}
+                 
+                />
+                {touched.widthP && errors.widthP && <Text style={styles.errorTxt}>{errors.widthP}</Text>}
+              </TextView>
+              <TextView>
+                <CalcButtonText>Sex</CalcButtonText>
+                <TextView3>
+                  <CalcButtonText>Male</CalcButtonText>
+                  <RadioButton
+                    value={"male"}
+                    status={checked1 === 'male' ? 'checked1' : 'unchecked1'}
+                    onPress={() => setChecked1('male')}
+                  />
+                  <CalcButtonText>Female</CalcButtonText>
+                  <RadioButton
+                    value={"female"}
+                    status={checked1 === 'female' ? 'checked1' : 'unchecked1'}
+                    onPress={() => setChecked1('female')}
+                  />
+                </TextView3>
+              </TextView>
+
+              <TouchableOpacity
+                onPress={handleSubmit}
+                disabled={!isValid}
+                style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
+              >
+                <Text style={styles.submitBtnText}>See results</Text>
+              </TouchableOpacity>
+              <TextView>
+                <SubTitle>Results:</SubTitle>
+                <CalcButtonText>Equilibrated clearance (ekt/V)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={eqClearance} />
+                <CalcButtonText>Standart weekly clearance (stdkt/V)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={stClearance} />
+                <CalcButtonText>Standart weekly clearance dializer (stdkt/V(dialysis))</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={stDiaClearance} />
+                <CalcButtonText>Native renal clearance of urea (KRU) (ml/min)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={nativeClearance} />
+                <CalcButtonText>Corrected native renal clearance of urea (aKRU)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={cNativeClearance} />
+                <CalcButtonText>Standart weekly renal clearance (stdkt/V(renal))</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={stWeeklyClearance} />
+                <CalcButtonText>Total weekly urea clearance (dializer+renal)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={twucClearance} />
+
+                <SubTitle>Optional results:</SubTitle>
+                <CalcButtonText>Adjusted weekly urine volume (l)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={wUrineVolume} />
+                <CalcButtonText>Volume of fluid remove during hemodialysis sessions per week (l)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={removeFluid} />
+                <CalcButtonText>Volume of distribution of urea (l)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={distributionUrea} />
+                <CalcButtonText>Corrected plasma urea (mmol/l)</CalcButtonText>
+                <TextInput style={styles.numericInput} editable={false} value={cPlasmaUrea} />
+                <ResCalc>
+                  <MenuButtonText>Save</MenuButtonText>
+                </ResCalc>
+                <ResCalc>
+                  <MenuButtonText>Clear</MenuButtonText>
+                </ResCalc>
+              </TextView>
+            </WelcomeContainer2>
+          </>
+        </SafeAreaView>
+      )}
+    </Formik>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -273,6 +399,19 @@ const styles = StyleSheet.create({
     width: 115,
     margin: 10,
     borderWidth: 1,
+  },
+  errorTxt: {
+    fontSize: 12,
+    color: '#FF0D10',
+  },
+  submitBtn: {
+    padding: 10,
+    justifyContent: 'center',
+  },
+  submitBtnText: {
+    color: '#FFE4E1',
+    textAlign: 'center',
+    fontSize: 18,
   },
 });
 
