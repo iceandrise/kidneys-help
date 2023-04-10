@@ -24,56 +24,56 @@ import * as Yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const SignUpSchema = Yup.object().shape({
-  singlePool: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  durationHemo: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  frequencySesions: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  dailyVolume: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  fluidIntake: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  urineUrea: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  ureaBlood: Yup.string()
-    .min(3)
-    .max(10)
-    .required('Enter a correct number')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  age: Yup.string()
-    .min(1)
-    .max(2)
-    .required('Enter a correct age')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  heightP: Yup.string()
-    .min(2)
-    .max(3)
-    .required('Enter a correct height')
-    .matches(/^[0-9].$/, 'Must be only digits'),
-  widthP: Yup.string()
-    .min(2)
-    .max(3)
-    .required('Enter a correct weight')
-    .matches(/^[0-9].$/, 'Must be only digits'),
+  singlePool: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (singlePool) => String(singlePool).length <= 8,
+  ),
+  durationHemo: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (durationHemo) => String(durationHemo).length <= 8,
+  ),
+  frequencySessions: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (frequencySessions) => String(frequencySessions).length <= 8,
+  ),
+  dailyVolume: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (dailyVolume) => String(dailyVolume).length <= 8,
+  ),
+  fluidIntake: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (fluidIntake) => String(fluidIntake).length <= 8,
+  ),
+  urineUrea: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (urineUrea) => String(urineUrea).length <= 8,
+  ),
+  ureaBlood: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (ureaBlood) => String(ureaBlood).length <= 8,
+  ),
+  age: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (age) => String(age).length === 2,
+  ),
+  heightP: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (heightP) => String(heightP).length <= 5,
+  ),
+  widthP: Yup.number().test(
+    'maxDigits',
+    'enter a correct number',
+    (widthP) => String(widthP).length <= 5,
+  ),
 });
 
 const TwucCalc = ({ navigation }) => {
@@ -81,7 +81,7 @@ const TwucCalc = ({ navigation }) => {
   //   const onChangeSearch = (query) => setSearchQuery(query);
     const [singlePool, OnChangeSinglePool] = useState('');
     const [durationHemo, OnChangeDurationHemo] = useState('');
-    const [frequencySesions, OnChangeFrequencySessions] = useState('');
+    const [frequencySessions, OnChangeFrequencySessions] = useState('');
     const [dailyVolume, OnChangeDailyVolume] = useState('');
     const [fluidIntake, OnChangeFluidIntake] = useState('');
     const [urineUrea, OnChangeUrineUrea] = useState('');
@@ -103,7 +103,7 @@ const TwucCalc = ({ navigation }) => {
   let eqClearance = singlePool * (durationHemo / (durationHemo + 30.7));
   let perem = Math.pow(Math.exp, -1 * eqClearance);
   let stClearance =
-    (10080 * (1 - perem)) / ((1 - perem) / eqClearance + (10080 / (frequencySesions * durationHemo) - 1));
+    (10080 * (1 - perem)) / ((1 - perem) / eqClearance + (10080 / (frequencySessions * durationHemo) - 1));
   let distributionUrea;
 
   if (sexType === 1) {
@@ -128,7 +128,7 @@ const TwucCalc = ({ navigation }) => {
   let nativeClearance = (1000 * dailyVolume * (urineUrea / 0.1665)) / (2.8 * cPlasmaUrea) / 1440;
 
   let removeFluid = fluidIntake - wUrineVolume;
-  let stDiaClearance = stClearance / ((1 - 0.74 / frequencySesions) * (removeFluid / distributionUrea));
+  let stDiaClearance = stClearance / ((1 - 0.74 / frequencySessions) * (removeFluid / distributionUrea));
   let stWeeklyClearance = cNativeClearance * (10080 / distributionUrea);
   let twucClearance = stWeeklyClearance + stDiaClearance;
 
@@ -138,7 +138,7 @@ const TwucCalc = ({ navigation }) => {
       initialValues={{
         singlePool: '',
         durationHemo: '',
-        frequencySesions: '',
+        frequencySessions: '',
         dailyVolume: '',
         fluidIntake: '',
         urineUrea: '',
@@ -204,13 +204,13 @@ const TwucCalc = ({ navigation }) => {
                   style={styles.input}
                   maxLength={10}
                   keyboardType="number-pad"
-                  onChangeText={handleChange('frequencySession')}
-                  value={values.frequencySesions}
-                  onBlur={() => setFieldTouched('frequencySession')}
+                  onChangeText={handleChange('frequencySessions')}
+                  value={values.frequencySessions}
+                  onBlur={() => setFieldTouched('frequencySessions')}
                  
                 />
-                {touched.frequencySesions && errors.frequencySesions && (
-                  <Text style={styles.errorTxt}>{errors.frequencySesions}</Text>
+                {touched.frequencySessions && errors.frequencySessions && (
+                  <Text style={styles.errorTxt}>{errors.frequencySessions}</Text>
                 )}
               </TextView>
               <TextView>
