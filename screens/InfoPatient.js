@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import {
   InnerContainer,
@@ -10,7 +10,7 @@ import {
   TextLinkContent,
   ActButtonText,
   TextLink,
-  StyledPatient,
+  CalcButtonText,
   StyledButtonAct,
   SubTitle,
   WelcomeContainer,
@@ -20,42 +20,113 @@ import {
   TextView,
 } from './../components/styles';
 import { Searchbar } from 'react-native-paper';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+const SignUpSchema = Yup.object().shape({
+  Surname: Yup.string().min(2).max(10).required('Enter correct surname'),
+  Name: Yup.string().min(2).max(10).required('Enter correct name'),
+  Room: Yup.string().min(2).max(8).required('Enter correct room'),
+});
 
 const InfoPatient = ({ navigation }) => {
-  //   const [searchQuery, setSearchQuery] = useState('');
   const [isDisabled, setDisabled] = useState(true);
   const [name, OnChangeName] = useState('Name of patient');
   const [surname, OnChangeSurname] = useState('Surname of patient');
   const [room, OnChangeRoom] = useState('Room');
   const [age, OnChangeAge] = useState('Age');
 
-  //   const [heightP, OnChangeHeight] = useState('Height');
-  //   const [widthP, OnChangeWidth] = useState('Width');
-  //   const [preasure, OnChangePreasure] = useState('Preasure');
-  //   const [sexP, OnChangeSex] = useState('Sex');
-
   return (
-    <>
-      <StatusBar style="light" />
-      <WelcomeContainer>
-        <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>Patient's info</MainTitle>
-      </WelcomeContainer>
-      <WelcomeContainer2>
-        <TextInput style={styles.input} onChangeText={OnChangeSurname} value={surname} />
-        <TextInput style={styles.input} onChangeText={OnChangeName} value={name} />
-        <TextInput style={styles.numericInput} onChangeText={OnChangeRoom} value={room} />
+    <Formik
+      initialValues={{
+        Surname: '',
+        Name: '',
+        Room: '',
+      }}
+      validationSchema={SignUpSchema}
+      onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+    >
+      {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
+        <>
+          <StatusBar style="light" />
+          <WelcomeContainer>
+            <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
+            <MainTitle>Patient's info</MainTitle>
+          </WelcomeContainer>
+          <WelcomeContainer2>
+            <TextView>
+            <CalcButtonText>Enter surname</CalcButtonText>
+              <TextInput
+                style={styles.input}
+                maxLength={10}
+                keyboardType="default"
+                onChangeText={handleChange('Surname')}
+                value={values.Surname}
+                onBlur={() => setFieldTouched('Surname')}
+              />
+              {touched.Surname && errors.Surname && (
+                <Text style={styles.errorTxt}>{errors.Surname}</Text>
+              )}
+            </TextView>
 
-        <TextInput style={styles.numericInput} editable={false} value="Duration" />
-        <TextInput style={styles.numericInput} editable={false} value="Sex" />
-        <TextInput style={styles.numericInput} editable={false} value="Water" />
-        <TextInput style={styles.numericInput} editable={false} value="Res1" />
-      </WelcomeContainer2>
-    </>
+            <TextView>
+            <CalcButtonText>Enter name</CalcButtonText>
+              <TextInput
+                style={styles.input}
+                maxLength={10}
+                keyboardType="default"
+                onChangeText={handleChange('Name')}
+                value={values.Name}
+                onBlur={() => setFieldTouched('Name')}
+              />
+              {touched.Name && errors.Name && (
+                <Text style={styles.errorTxt}>{errors.Name}</Text>
+              )}
+            </TextView>
+
+            <TextView>
+            <CalcButtonText>Enter room</CalcButtonText>
+              <TextInput
+                style={styles.input}
+                maxLength={8}
+                keyboardType="default"
+                onChangeText={handleChange('Room')}
+                value={values.Room}
+                onBlur={() => setFieldTouched('Room')}
+              />
+              {touched.Room && errors.Room && (
+                <Text style={styles.errorTxt}>{errors.Room}</Text>
+              )}
+            </TextView>
+
+            <TouchableOpacity
+              onPress={handleSubmit}
+              disabled={!isValid}
+              style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
+            >
+              <Text style={styles.submitBtnText}>Add patient</Text>
+            </TouchableOpacity>
+          </WelcomeContainer2>
+        </>
+      )}
+    </Formik>
   );
 };
 
 const styles = StyleSheet.create({
+  errorTxt: {
+    fontSize: 12,
+    color: '#FF0D10',
+  },
+  submitBtn: {
+    padding: 10,
+    justifyContent: 'center',
+  },
+  submitBtnText: {
+    color: '#FFE4E1',
+    textAlign: 'center',
+    fontSize: 18,
+  },
   input: {
     height: 40,
     width: 250,
