@@ -70,8 +70,7 @@ export const MainTitle = styled.Text`
   font-size: 24px;
   /* font-family: 'cursive'; */
   margin-left: 15px;
-  position: absolute;
-  right: 0;
+
   font-weight: bold;
   color: ${tertiary};
 `;
@@ -204,12 +203,11 @@ export const WelcomeContainer = styled.View`
   position: absolute;
 `;
 export const WelcomeContainer6 = styled.View`
-justify-content: space-between;
-flex-direction: row;
-width: 100%;
- position: relative;
- display: flex;
-
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  display: flex;
 `;
 
 export const WelcomeContainer2 = styled.View`
@@ -221,7 +219,7 @@ export const WelcomeContainer2 = styled.View`
   justify-content: center;
   padding: 20px;
   top: 40px;
-  
+  padding-bottom: 90px;
 `;
 export const WelcomeContainer3 = styled.View`
   flex: 1;

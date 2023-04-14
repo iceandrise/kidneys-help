@@ -9,7 +9,7 @@ import Terms from './../screens/Terms';
 import Privacy from '../screens/Privacy';
 import Calculator from '../screens/Calculator';
 import ContactUs from '../screens/ContactUs';
-import InfoPatient from '../screens/InfoPatient';
+import AddPatient from '../screens/AddPatient';
 import Chart from '../screens/Chart';
 import Settings from '../screens/Settings';
 import React, { useState, useEffect } from 'react';
@@ -23,6 +23,8 @@ import Payment from '../screens/Payment';
 import TwucCalc from '../screens/TwucCalc';
 import Premium from '../screens/Premium';
 import Diary from '../screens/Diary';
+import Results from '../screens/Results';
+import Result from '../screens/Result';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -56,7 +58,7 @@ const RootStack = () => {
             },
           }}
           //general screen
-          initialRouteName="Login"
+          initialRouteName="Home"
         >
           {isAuthorized ? (
             <Stack.Group>
@@ -66,15 +68,17 @@ const RootStack = () => {
               <Stack.Screen name="Terms" component={Terms} />
               <Stack.Screen name="Privacy" component={Privacy} />
               <Stack.Screen name="Calculator" component={Calculator} />
-              <Stack.Screen name="Patients" component={Patients} />
+              <Stack.Screen name="Patients" component={Patients} options={{}} />
               <Stack.Screen name="ContactUs" component={ContactUs} />
-              <Stack.Screen name="InfoPatient" component={InfoPatient} />
+              <Stack.Screen name="AddPatient" component={AddPatient} />
               <Stack.Screen name="Chart" component={Chart} />
               <Stack.Screen name="Settings" component={Settings} />
               <Stack.Screen name="Payment" component={Payment} />
               <Stack.Screen name="TwucCalc" component={TwucCalc} />
               <Stack.Screen name="Premium" component={Premium} />
               <Stack.Screen name="Diary" component={Diary} />
+              <Stack.Screen name="Results" component={Results} />
+              <Stack.Screen name="Result" component={Result} />
             </Stack.Group>
           ) : (
             <Stack.Group>

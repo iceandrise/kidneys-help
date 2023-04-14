@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyAThgvXmwIglJcOScAD5cZ084P05NWALzM',
   authDomain: 'kidneyshelp-e2d59.firebaseapp.com',
   projectId: 'kidneyshelp-e2d59',

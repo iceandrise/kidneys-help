@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { SafeAreaView } from 'react-native';
 import themeContext from '../theme/themeContext';
 import {
   ItemsView,
@@ -10,7 +11,6 @@ import {
   WelcomeContainer6,
   WelcomeImage,
 } from './../components/styles';
-import { SafeAreaView, StatusBar } from 'react-native';
 
 const Home = ({ navigation }) => {
   const theme = useContext(themeContext);
