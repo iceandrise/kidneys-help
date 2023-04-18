@@ -25,6 +25,10 @@ import Premium from '../screens/Premium';
 import Diary from '../screens/Diary';
 import Results from '../screens/Results';
 import Result from '../screens/Result';
+import Daugirdas from '../screens/Daugirdas';
+import Watson from '../screens/Watson';
+import HumeWeyers from '../screens/Hume-Weyers';
+import MellitsCheek from '../screens/Mellits-Cheek';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -79,6 +83,10 @@ const RootStack = () => {
               <Stack.Screen name="Diary" component={Diary} />
               <Stack.Screen name="Results" component={Results} />
               <Stack.Screen name="Result" component={Result} />
+              <Stack.Screen name="Daugirdas" component={Daugirdas} />
+              <Stack.Screen name="Watson" component={Watson} />
+              <Stack.Screen name="HumeWeyers" component={HumeWeyers} />
+              <Stack.Screen name="MellitsCheek" component={MellitsCheek} />
             </Stack.Group>
           ) : (
             <Stack.Group>

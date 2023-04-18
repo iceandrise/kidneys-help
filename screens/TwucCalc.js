@@ -19,18 +19,18 @@ import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
 const SignUpSchema = Yup.object().shape({
-  singlePool: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  durationHemo: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  frequencySessions: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  dailyVolume: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  fluidIntake: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  urineUrea: Yup.number().max(8, 'enter a number less than or equal to 8'),
-  ureaBlood: Yup.number().max(8, 'enter a number less than or equal to 8'),
+  singlePool: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  durationHemo: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  frequencySessions: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  dailyVolume: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  fluidIntake: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  urineUrea: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
+  ureaBlood: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
   age: Yup.number()
     .min(18, 'enter a number greater than or equal to 18')
     .max(99, 'enter a number less than or equal to 99'),
-  heightP: Yup.number().max(5, 'enter a number less than or equal to 5'),
-  widthP: Yup.number().max(5, 'enter a number less than or equal to 5'),
+  heightP: Yup.number().max(250, 'enter a number less than or equal to 250'),
+  widthP: Yup.number().max(200, 'enter a number less than or equal to 200'),
   patientId: Yup.string().optional(),
   date: Yup.string().optional(),
 });
@@ -298,7 +298,7 @@ const TwucCalc = () => {
                   {touched.age && errors.age && <Text style={styles.errorTxt}>{errors.age}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Height</CalcButtonText>
+                  <CalcButtonText>Height (cm)</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -310,7 +310,7 @@ const TwucCalc = () => {
                   {touched.heightP && errors.heightP && <Text style={styles.errorTxt}>{errors.heightP}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Width</CalcButtonText>
+                  <CalcButtonText>Weight (kg)</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}

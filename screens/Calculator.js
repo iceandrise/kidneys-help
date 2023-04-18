@@ -38,11 +38,14 @@ const Calculator = ({ navigation }) => {
         <StyledButtonCalc onPress={() => navigation.navigate('TwucCalc')}>
           <CalcButtonText>Total weekly urea clearance calculate</CalcButtonText>
         </StyledButtonCalc>
-        <StyledButtonCalc>
-          <CalcButtonText>* calculate</CalcButtonText>
+        <StyledButtonCalc onPress={() => navigation.navigate('Daugirdas')}>
+          <CalcButtonText>Adequacy of hemodialysis Daugirdas</CalcButtonText>
         </StyledButtonCalc>
-        <StyledButtonCalc>
-          <CalcButtonText>** calculate</CalcButtonText>
+        <StyledButtonCalc onPress={() => navigation.navigate('Watson')}>
+          <CalcButtonText>Total amount of water for adults by Watson</CalcButtonText>
+        </StyledButtonCalc>
+        <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
+          <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>
         </StyledButtonCalc>
         <TextView>
         <TextLink onPress={() => navigation.navigate('Premium')}>
