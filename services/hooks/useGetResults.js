@@ -1,17 +1,18 @@
 import { collection, getDoc, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { db } from '../connection';
 
-export const useGetResults = () => {
+export const useGetResults = (collectionName) => {
   const [data, setData] = useState({
     results: [],
     error: null,
     loading: true,
   });
 
-  const fetchResults = async () => {
+  const fetchResults = useCallback(async () => {
+    console.log(collectionName);
     try {
-      const resultsCollection = collection(db, 'Results');
+      const resultsCollection = collection(db, collectionName);
 
       const resultsSnapshot = await getDocs(resultsCollection);
 
@@ -20,6 +21,7 @@ export const useGetResults = () => {
           const data = doc.data();
           const referenceDoc = await getDoc(data.patientRef);
           const referencePatient = referenceDoc.data();
+
           return {
             id: doc.id,
             ...data,
@@ -33,7 +35,7 @@ export const useGetResults = () => {
       console.error('Error fetching entity: ', err);
       setData({ results, error: err, loading: false });
     }
-  };
+  }, [collectionName]);
 
   useEffect(() => {
     fetchResults();

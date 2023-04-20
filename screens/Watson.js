@@ -17,9 +17,10 @@ import {
 } from './../components/styles';
 import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import { WATSON_CALC } from '../constant';
 
 const SignUpSchema = Yup.object().shape({
-    age: Yup.number()
+  age: Yup.number()
     .min(18, 'enter a number greater than or equal to 18')
     .max(99, 'enter a number less than or equal to 99'),
   heightP: Yup.number().max(250, 'enter a number less than or equal to 250'),
@@ -44,14 +45,14 @@ const Watson = ({ navigation }) => {
   }, [patients]);
 
   const test = (input) => {
-    const { age, heightP, widthP, } = input;
+    const { age, heightP, widthP } = input;
 
     let waterWatson = 1;
     if (sexType === 'male') {
-        waterWatson = 2.447 - 0.09516 * age + 0.1074 * heightP + 0.3362 * widthP;
-      } else if (sexType === 'female') {
-        waterWatson = -2.097 + 0.1069 * heightP + 0.2466 * widthP;
-      }
+      waterWatson = 2.447 - 0.09516 * age + 0.1074 * heightP + 0.3362 * widthP;
+    } else if (sexType === 'female') {
+      waterWatson = -2.097 + 0.1069 * heightP + 0.2466 * widthP;
+    }
 
     const result = {
       patientId: selectedItem,
@@ -73,7 +74,7 @@ const Watson = ({ navigation }) => {
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           const result = test(values);
-          addCalcResult(result).then(() => navigate('Results'));
+          addCalcResult(result, WATSON_CALC).then(() => navigate(WATSON_CALC));
         }}
       >
         {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
@@ -85,7 +86,7 @@ const Watson = ({ navigation }) => {
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
-                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate('Results')}>
+                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(WATSON_CALC)}>
                   <Text>Show Reports</Text>
                 </Button>
                 <TextView>
@@ -165,7 +166,7 @@ const Watson = ({ navigation }) => {
                   />
                   {touched.widthP && errors.widthP && <Text style={styles.errorTxt}>{errors.widthP}</Text>}
                 </TextView>
-                
+
                 <TouchableOpacity
                   onPress={handleSubmit}
                   disabled={!isValid}

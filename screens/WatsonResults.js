@@ -1,11 +1,11 @@
-import React from 'react';
-import { useGetResults } from '../services/hooks/useGetResults';
-import { StyleSheet, FlatList, View } from 'react-native';
 import { Badge, Box, Flex, HStack, Heading, Pressable, Spacer, Text } from 'native-base';
-import { TWUC_CALC } from '../constant';
+import React from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { WATSON_CALC } from '../constant';
+import { useGetResults } from '../services/hooks/useGetResults';
 
-export default function Results() {
-  const { results } = useGetResults(TWUC_CALC);
+export default function WatsonResults() {
+  const { results } = useGetResults(WATSON_CALC);
 
   const renderItem = ({ item, index }) => {
     return item.patient ? (
@@ -29,6 +29,7 @@ export default function Results() {
                 borderWidth="1"
                 borderColor="coolGray.300"
               >
+                {/* <Icon as={FontAwesome} name={'remove'} size="10" color="red" position={'absolute'} right={0} /> */}
                 <HStack alignItems="center">
                   <Badge
                     colorScheme="darkBlue"
@@ -40,6 +41,7 @@ export default function Results() {
                   >
                     {`Room: ${item?.patient?.room}`}
                   </Badge>
+
                   <Spacer />
                   <Text fontSize={10} color="coolGray.800">
                     {item?.date}
@@ -49,37 +51,7 @@ export default function Results() {
                   {`${item?.patient?.firstName} ${item?.patient?.lastName}`}
                 </Text>
                 <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'eqClearance'} ${item?.eqClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'stClearance'} ${item?.stClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'stDiaClearance'} ${item?.stDiaClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'nativeClearance'} ${item?.nativeClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'cNativeClearance'} ${item?.cNativeClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'stWeeklyClearance'} ${item?.stWeeklyClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'twucClearance'} ${item?.twucClearance}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'wUrineVolume'} ${item?.wUrineVolume}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'removeFluid'} ${item?.removeFluid}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'distributionUrea'} ${item?.distributionUrea}`}
-                </Text>
-                <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'cPlasmaUrea'} ${item?.cPlasmaUrea}`}
+                  {`${'waterWatson'} ${item?.waterWatson}`}
                 </Text>
                 <Flex>
                   {isFocused ? (

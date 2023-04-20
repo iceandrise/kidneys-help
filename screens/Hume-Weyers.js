@@ -17,6 +17,7 @@ import {
 } from './../components/styles';
 import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import { HUME_WEYERS_CALC } from '../constant';
 
 const SignUpSchema = Yup.object().shape({
   heightP: Yup.number().max(250, 'enter a number less than or equal to 250'),
@@ -41,14 +42,14 @@ const HumeWeyers = ({ navigation }) => {
   }, [patients]);
 
   const test = (input) => {
-    const { heightP, widthP, } = input;
+    const { heightP, widthP } = input;
 
     let waterHume = 1;
     if (sexType === 'male') {
-        waterHume = (0.194786*heightP)+(0.296785*widthP)-14.012934
-      } else if (sexType === 'female') {
-        waterHume = (0.34454*heightP)+(0.183809*widthP)-35.270121
-      }
+      waterHume = 0.194786 * heightP + 0.296785 * widthP - 14.012934;
+    } else if (sexType === 'female') {
+      waterHume = 0.34454 * heightP + 0.183809 * widthP - 35.270121;
+    }
 
     const result = {
       patientId: selectedItem,
@@ -69,7 +70,7 @@ const HumeWeyers = ({ navigation }) => {
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           const result = test(values);
-          addCalcResult(result).then(() => navigate('Results'));
+          addCalcResult(result, HUME_WEYERS_CALC).then(() => navigate(HUME_WEYERS_CALC));
         }}
       >
         {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
@@ -81,7 +82,7 @@ const HumeWeyers = ({ navigation }) => {
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
-                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate('Results')}>
+                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(HUME_WEYERS_CALC)}>
                   <Text>Show Reports</Text>
                 </Button>
                 <TextView>
@@ -149,7 +150,7 @@ const HumeWeyers = ({ navigation }) => {
                   />
                   {touched.widthP && errors.widthP && <Text style={styles.errorTxt}>{errors.widthP}</Text>}
                 </TextView>
-                
+
                 <TouchableOpacity
                   onPress={handleSubmit}
                   disabled={!isValid}

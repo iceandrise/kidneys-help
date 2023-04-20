@@ -17,6 +17,7 @@ import {
 } from './../components/styles';
 import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import { MELLITS_CHECK_CALC } from '../constant';
 
 const SignUpSchema = Yup.object().shape({
   heightP: Yup.number().max(250, 'enter a number less than or equal to 250'),
@@ -73,7 +74,7 @@ const MellitsCheek = ({ navigation }) => {
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           const result = test(values);
-          addCalcResult(result).then(() => navigate('Results'));
+          addCalcResult(result, MELLITS_CHECK_CALC).then(() => navigate(MELLITS_CHECK_CALC));
         }}
       >
         {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
@@ -85,7 +86,7 @@ const MellitsCheek = ({ navigation }) => {
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
-                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate('Results')}>
+                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(MELLITS_CHECK_CALC)}>
                   <Text>Show Reports</Text>
                 </Button>
                 <TextView>

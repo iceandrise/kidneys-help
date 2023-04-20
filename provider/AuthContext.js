@@ -47,7 +47,6 @@ export const AuthContextProvider = ({ children }) => {
         setUser(undefined);
       }
     });
-
     return unsubscribeFromAuthStatusChanged;
   }, []);
 

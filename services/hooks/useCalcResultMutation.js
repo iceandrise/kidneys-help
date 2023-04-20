@@ -1,35 +1,21 @@
+import { addDoc, collection, deleteDoc, doc } from 'firebase/firestore';
 import { useState } from 'react';
-import { collection, getDoc, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../connection';
 
 export const useCalcResultMutation = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const addCalcResult = async (input) => {
+  const addCalcResult = async (input, collectionName) => {
     setLoading(true);
     try {
-      const resultDocRef = doc(collection(db, 'Patients'), input.patientId);
-
-      // Retrieve the document contents
-      const resultDocSnapshot = await getDoc(resultDocRef);
-      console.log('resultDocSnapshot', resultDocSnapshot);
-      const docRef = await addDoc(collection(db, 'Results'), {
-        patientId: input.patientId,
-        date: input.date,
-        eqClearance: input.eqClearance,
-        stClearance: input.stClearance,
-        stDiaClearance: input.stDiaClearance,
-        nativeClearance: input.nativeClearance,
-        cNativeClearance: input.cNativeClearance,
-        stWeeklyClearance: input.stWeeklyClearance,
-        twucClearance: input.twucClearance,
-        wUrineVolume: input.wUrineVolume,
-        removeFluid: input.removeFluid,
-        distributionUrea: input.distributionUrea,
-        cPlasmaUrea: input.cPlasmaUrea,
-        patientRef: resultDocRef,
-      });
-      console.log('Document written with ID: ', docRef);
+      if (collectionName) {
+        const resultDocRef = doc(collection(db, 'Patients'), input.patientId);
+        const docRef = await addDoc(collection(db, collectionName), {
+          ...input,
+          patientRef: resultDocRef,
+        });
+        console.log('Document written with ID: ', docRef);
+      }
       setLoading(false);
     } catch (err) {
       console.error('Error fetching entity: ', err);
@@ -38,11 +24,13 @@ export const useCalcResultMutation = () => {
     }
   };
 
-  const removeCalcResult = async (id) => {
+  const removeCalcResult = async (id, collectionName) => {
     setLoading(true);
     try {
-      await deleteDoc(doc(db, 'Results', id));
-      setLoading(false);
+      if (collectionName) {
+        await deleteDoc(doc(db, collectionName, id));
+        setLoading(false);
+      }
     } catch (err) {
       console.error('Error fetching entity: ', err);
       setError(err);

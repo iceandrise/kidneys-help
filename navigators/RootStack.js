@@ -29,6 +29,11 @@ import Daugirdas from '../screens/Daugirdas';
 import Watson from '../screens/Watson';
 import HumeWeyers from '../screens/Hume-Weyers';
 import MellitsCheek from '../screens/Mellits-Cheek';
+import { DUAGIRDAS_CALC, HUME_WEYERS_CALC, MELLITS_CHECK_CALC, WATSON_CALC } from '../constant';
+import DaugirdasResults from '../screens/DaugirdasResults';
+import HumeWeyersResults from '../screens/HumeWeyersResults';
+import MellitsCheekResults from '../screens/MellitsCheekResults';
+import WatsonResults from '../screens/WatsonResults';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -84,13 +89,18 @@ const RootStack = () => {
               <Stack.Screen name="Results" component={Results} />
               <Stack.Screen name="Result" component={Result} />
               <Stack.Screen name="Daugirdas" component={Daugirdas} />
+              <Stack.Screen name={DUAGIRDAS_CALC} component={DaugirdasResults} />
               <Stack.Screen name="Watson" component={Watson} />
+              <Stack.Screen name={WATSON_CALC} component={WatsonResults} />
               <Stack.Screen name="HumeWeyers" component={HumeWeyers} />
+              <Stack.Screen name={HUME_WEYERS_CALC} component={HumeWeyersResults} />
               <Stack.Screen name="MellitsCheek" component={MellitsCheek} />
+              <Stack.Screen name={MELLITS_CHECK_CALC} component={MellitsCheekResults} />
             </Stack.Group>
           ) : (
             <Stack.Group>
               <Stack.Screen name="Login" component={Login} />
+              {/* <Stack.Screen options={{ headerTintColor: primary }} name="Home" component={Home} /> */}
             </Stack.Group>
           )}
         </Stack.Navigator>

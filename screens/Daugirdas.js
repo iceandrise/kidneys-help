@@ -1,22 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
+import { Box, Button, CheckIcon, Select } from 'native-base';
 import React, { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { RadioButton } from 'react-native-paper';
 import * as Yup from 'yup';
-import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
 import { useGetPatients } from '../services/hooks/useGetPatients';
-import {
-  CalcButtonText,
-  MainTitle,
-  TextView,
-  TextView3,
-  WelcomeContainer2,
-  WelcomeContainer6,
-  WelcomeImage,
-} from './../components/styles';
-import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
-import { useNavigation } from '@react-navigation/native';
+import { CalcButtonText, MainTitle, TextView, WelcomeContainer2, WelcomeContainer6 } from './../components/styles';
+import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
+import { DUAGIRDAS_CALC } from '../constant';
 
 const SignUpSchema = Yup.object().shape({
   postUrea: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
@@ -46,13 +37,13 @@ const Daugirdas = ({ navigation }) => {
     const { postUrea, preUrea, UF, Weight, durationHemo } = input;
 
     let singlePool = -1 * Math.log2(postUrea - preUrea - 0.03) + (4 - 3.5 * (postUrea - preUrea)) * (UF / Weight);
-    let adequancy = singlePool - 0.47 * singlePool * durationHemo + 0.02;
+    let adequacy = singlePool - 0.47 * singlePool * durationHemo + 0.02;
 
     const result = {
       patientId: selectedItem,
       date: new Date().toLocaleDateString(),
       singlePool,
-      adequancy,
+      adequacy,
     };
     console.log(result);
     return result;
@@ -71,7 +62,7 @@ const Daugirdas = ({ navigation }) => {
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           const result = test(values);
-          addCalcResult(result).then(() => navigate('Results'));
+          addCalcResult(result, DUAGIRDAS_CALC).then(() => navigate(DUAGIRDAS_CALC));
         }}
       >
         {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
@@ -83,7 +74,7 @@ const Daugirdas = ({ navigation }) => {
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
-                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate('Results')}>
+                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(DUAGIRDAS_CALC)}>
                   <Text>Show Reports</Text>
                 </Button>
                 <TextView>
@@ -132,9 +123,7 @@ const Daugirdas = ({ navigation }) => {
                     value={values.preUrea}
                     onBlur={() => setFieldTouched('preUrea')}
                   />
-                  {touched.preUrea && errors.preUrea && (
-                    <Text style={styles.errorTxt}>{errors.preUrea}</Text>
-                  )}
+                  {touched.preUrea && errors.preUrea && <Text style={styles.errorTxt}>{errors.preUrea}</Text>}
                 </TextView>
                 <TextView>
                   <CalcButtonText>Volume of ultrafiltrate removed (l)</CalcButtonText>
@@ -146,9 +135,7 @@ const Daugirdas = ({ navigation }) => {
                     value={values.UF}
                     onBlur={() => setFieldTouched('UF')}
                   />
-                  {touched.UF && errors.UF && (
-                    <Text style={styles.errorTxt}>{errors.UF}</Text>
-                  )}
+                  {touched.UF && errors.UF && <Text style={styles.errorTxt}>{errors.UF}</Text>}
                 </TextView>
                 <TextView>
                   <CalcButtonText>Weight (kg)</CalcButtonText>
@@ -160,9 +147,7 @@ const Daugirdas = ({ navigation }) => {
                     value={values.Weight}
                     onBlur={() => setFieldTouched('Weight')}
                   />
-                  {touched.Weight && errors.Weight && (
-                    <Text style={styles.errorTxt}>{errors.Weight}</Text>
-                  )}
+                  {touched.Weight && errors.Weight && <Text style={styles.errorTxt}>{errors.Weight}</Text>}
                 </TextView>
                 <TextView>
                   <CalcButtonText>Duration of hemodialysis session (min)</CalcButtonText>
@@ -178,7 +163,7 @@ const Daugirdas = ({ navigation }) => {
                     <Text style={styles.errorTxt}>{errors.durationHemo}</Text>
                   )}
                 </TextView>
-                
+
                 <TouchableOpacity
                   onPress={handleSubmit}
                   disabled={!isValid}

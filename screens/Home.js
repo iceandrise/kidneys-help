@@ -11,12 +11,15 @@ import {
   WelcomeContainer6,
   WelcomeImage,
 } from './../components/styles';
+import { useNavigation } from '@react-navigation/native';
 
-const Home = ({ navigation }) => {
+const Home = () => {
   const theme = useContext(themeContext);
   const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = (query) => setSearchQuery(query);
   const [darkMode, setDarkMode] = useState(false);
+  const navigation = useNavigation();
+  console.log(navigation.getState());
   return (
     <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
       <WelcomeContainer6 style={[{ backgroundColor: theme.backgroundColor }]}>

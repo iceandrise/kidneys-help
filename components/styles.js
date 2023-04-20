@@ -215,7 +215,7 @@ export const WelcomeContainer2 = styled.View`
   position: relative;
   align-items: center;
   width: 100%;
-  display: block;
+  /* display: block; */
   justify-content: center;
   padding: 20px;
   top: 40px;
@@ -227,7 +227,7 @@ export const WelcomeContainer3 = styled.View`
   align-items: center;
   width: 100%;
   background-color: ${lightback};
-  display: block;
+  /* display: block; */
   grid-template-columns: auto auto auto;
   justify-content: center;
   top: 40px;
@@ -286,17 +286,14 @@ export const ItemsView = styled.View`
 `;
 
 export const TextView2 = styled.View`
-  flex-direction: block;
   width: 70%;
 `;
 
 export const TextView = styled.View`
-  flex-direction: block;
   width: 100%;
 `;
 
 export const TextView5 = styled.View`
-  flex-direction: block;
   margin: 5px;
 `;
 

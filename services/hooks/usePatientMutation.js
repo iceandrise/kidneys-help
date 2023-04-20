@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, getDocs, where, query, getDoc } from 'firebase/firestore';
 import { db } from '../connection';
 
 export const usePatientMutation = () => {
@@ -26,6 +26,7 @@ export const usePatientMutation = () => {
   const removePatient = async (id) => {
     setLoading(true);
     try {
+      // const resultsQuery = query(collection(db, 'Results'), where('patientId', '==', id));
       await deleteDoc(doc(db, 'Patients', id));
       setLoading(false);
     } catch (err) {

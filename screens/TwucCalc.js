@@ -17,6 +17,7 @@ import {
 } from './../components/styles';
 import { Box, Button, CheckIcon, Radio, Select } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import { TWUC_CALC } from '../constant';
 
 const SignUpSchema = Yup.object().shape({
   singlePool: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
@@ -134,7 +135,7 @@ const TwucCalc = () => {
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           const result = test(values);
-          addCalcResult(result).then(() => navigate('Results'));
+          addCalcResult(result, TWUC_CALC).then(() => navigate(TWUC_CALC));
         }}
       >
         {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
@@ -146,7 +147,7 @@ const TwucCalc = () => {
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
-                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate('Results')}>
+                <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(TWUC_CALC)}>
                   <Text>Show Reports</Text>
                 </Button>
                 <TextView>
