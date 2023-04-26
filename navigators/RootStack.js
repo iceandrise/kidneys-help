@@ -34,6 +34,9 @@ import DaugirdasResults from '../screens/DaugirdasResults';
 import HumeWeyersResults from '../screens/HumeWeyersResults';
 import MellitsCheekResults from '../screens/MellitsCheekResults';
 import WatsonResults from '../screens/WatsonResults';
+import { LiquidChart } from '../screens/LiquidChart';
+import { PreasureChart } from '../screens/PreasureChart';
+import { WeightChart } from '../screens/WeightChart';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -96,6 +99,10 @@ const RootStack = () => {
               <Stack.Screen name={HUME_WEYERS_CALC} component={HumeWeyersResults} />
               <Stack.Screen name="MellitsCheek" component={MellitsCheek} />
               <Stack.Screen name={MELLITS_CHECK_CALC} component={MellitsCheekResults} />
+              {/* Charts */}
+              <Stack.Screen name="LiquidChart" component={LiquidChart} />
+              <Stack.Screen name="PreasureChart" component={PreasureChart} />
+              <Stack.Screen name="WeightChart" component={WeightChart} />
             </Stack.Group>
           ) : (
             <Stack.Group>

@@ -1,30 +1,25 @@
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
-import React, { useState } from 'react';
-import { RadioButton } from 'react-native-paper';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { RadioButton } from 'react-native-paper';
+import * as Yup from 'yup';
 import {
-  InnerContainer,
-  PageTitle,
-  MainTitle,
-  StyledFormArea,
-  TextContent,
-  TextLinkContent,
   ActButtonText,
-  MenuButtonText,
-  ResCalc,
-  StyledButtonAct,
   CalcButtonText,
+  MainTitle,
+  StyledButtonAct,
+  TextView,
+  TextView4,
+  TextView5,
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
-  TextView,
-  TextView5,
-  TextView4,
 } from './../components/styles';
-import { Searchbar } from 'react-native-paper';
+import { useDiaryMutation } from '../services/hooks/useDiaryMutation';
+import { useDiaryQuery } from '../services/hooks/useDiaryQuery';
 
 const SignUpSchema = Yup.object().shape({
   inputParameter: Yup.number().test(
@@ -35,25 +30,23 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const Diary = ({ navigation }) => {
-  //   const [searchQuery, setSearchQuery] = useState('');
-  const [isDisabled, setDisabled] = useState(true);
-  const [name, OnChangeName] = useState('Name of patient');
-  const [surname, OnChangeSurname] = useState('Surname of patient');
-  const [room, OnChangeRoom] = useState('Room');
-  const [age, OnChangeAge] = useState('');
-  const [checked, setChecked] = useState('Preasure');
-  const [show, setShow] = useState(false);
+  const [selectedDiary, setSelectedDiary] = useState('Preasure');
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(1);
   const [items, setItems] = useState([
-    { label: 'Monday', value: 'mon' },
-    { label: 'Tuesday', value: 'tue' },
-    { label: 'Wednesday', value: 'wed' },
-    { label: 'Thursday', value: 'thu' },
-    { label: 'Friday', value: 'fri' },
-    { label: 'Saturday', value: 'sat' },
-    { label: 'Sunday', value: 'sun' },
+    { label: 'Monday', value: 1 },
+    { label: 'Tuesday', value: 2 },
+    { label: 'Wednesday', value: 3 },
+    { label: 'Thursday', value: 4 },
+    { label: 'Friday', value: 5 },
+    { label: 'Saturday', value: 6 },
+    { label: 'Sunday', value: 7 },
   ]);
+  const { refetch } = useDiaryQuery('Weight');
+
+  const { addDiary, loading } = useDiaryMutation();
+
+  const { navigate } = useNavigation();
 
   return (
     <Formik
@@ -61,7 +54,11 @@ const Diary = ({ navigation }) => {
         inputParameter: '',
       }}
       validationSchema={SignUpSchema}
-      onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+      onSubmit={(values) => {
+        addDiary({ ...values, day: value }, selectedDiary).then(() => {
+          refetch();
+        });
+      }}
     >
       {({ values, errors, touched, handleChange, setFieldTouched, onBlur, isValid, handleSubmit }) => (
         <>
@@ -75,24 +72,24 @@ const Diary = ({ navigation }) => {
               <TextView4>
                 <RadioButton
                   value="Preasure"
-                  status={checked === 'Preasure' ? 'checked' : 'unchecked'}
-                  onPress={() => setChecked('Preasure')}
+                  status={selectedDiary === 'Preasure' ? 'checked' : 'unchecked'}
+                  onPress={() => setSelectedDiary('Preasure')}
                 />
                 <CalcButtonText>Preasure</CalcButtonText>
               </TextView4>
               <TextView4>
                 <RadioButton
                   value="Weight"
-                  status={checked === 'Weight' ? 'checked' : 'unchecked'}
-                  onPress={() => setChecked('Weight')}
+                  status={selectedDiary === 'Weight' ? 'checked' : 'unchecked'}
+                  onPress={() => setSelectedDiary('Weight')}
                 />
                 <CalcButtonText>Weight</CalcButtonText>
               </TextView4>
               <TextView4>
                 <RadioButton
                   value="Liquid consumed"
-                  status={checked === 'Liquid consumed' ? 'checked' : 'unchecked'}
-                  onPress={() => setChecked('Liquid consumed')}
+                  status={selectedDiary === 'Liquid' ? 'checked' : 'unchecked'}
+                  onPress={() => setSelectedDiary('Liquid')}
                 />
                 <CalcButtonText>Liquid consumed</CalcButtonText>
               </TextView4>
@@ -101,6 +98,7 @@ const Diary = ({ navigation }) => {
               </StyledButtonAct>
               <DropDownPicker
                 open={open}
+                defaultValue={value}
                 value={value}
                 items={items}
                 setOpen={setOpen}
@@ -127,6 +125,13 @@ const Diary = ({ navigation }) => {
                 style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
               >
                 <Text style={styles.submitBtnText}>Make chart</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigate(`${selectedDiary}Chart`)}
+                disabled={!isValid}
+                style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
+              >
+                <Text style={styles.submitBtnText}>Show Chart</Text>
               </TouchableOpacity>
             </TextView5>
           </WelcomeContainer2>
