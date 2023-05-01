@@ -36,7 +36,7 @@ const Daugirdas = ({ navigation }) => {
   const test = (input) => {
     const { postUrea, preUrea, UF, Weight, durationHemo } = input;
 
-    let singlePool = -1 * Math.log2(postUrea - preUrea - 0.03) + (4 - 3.5 * (postUrea - preUrea)) * (UF / Weight);
+    let singlePool = -1 * Math.log2((postUrea / preUrea) - 0.03) + (4 - 3.5 * (postUrea / preUrea)) * (UF / Weight);
     let adequacy = singlePool - 0.47 * singlePool * durationHemo + 0.02;
 
     const result = {
@@ -150,7 +150,7 @@ const Daugirdas = ({ navigation }) => {
                   {touched.Weight && errors.Weight && <Text style={styles.errorTxt}>{errors.Weight}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Duration of hemodialysis session (min)</CalcButtonText>
+                  <CalcButtonText>Duration of hemodialysis session (h)</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
