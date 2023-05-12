@@ -10,7 +10,7 @@ const resources = {
   ru,
 };
 
-i18n.use(initReactI18next).use(languageDetectorPlugin).init({
+i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
   resources,
   ns: namespaces,
