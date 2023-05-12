@@ -1,35 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { View, Button, Switch } from 'react-native';
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Switch } from 'react-native';
+import { EventRegister } from 'react-native-event-listeners';
+import themeContext from '../theme/themeContext';
 import {
-  InnerContainer,
-  PageTitle,
-  MainTitle,
   FormAct,
-  TextContent,
-  SetButtonText,
-  ActButtonText,
-  SubTitle,
-  StyledPatient,
   ItemsViewDop,
-  SecTextLink,
+  MainTitle,
+  SetButtonText,
+  SubTitle,
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
-  ItemsView,
-  TextView,
 } from './../components/styles';
-import { Searchbar } from 'react-native-paper';
-import { EventRegister } from 'react-native-event-listeners';
-import themeContext from '../theme/themeContext';
-import theme from '../theme/theme';
-import { ThemeContext } from 'styled-components';
 
 const Settings = ({ navigation }) => {
   const theme = useContext(themeContext);
+  const { i18n } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = (query) => setSearchQuery(query);
   const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState(i18n.language);
+
   return (
     <>
       <WelcomeContainer style={[{ backgroundColor: theme.backgroundColor }]}>
@@ -38,33 +30,31 @@ const Settings = ({ navigation }) => {
       </WelcomeContainer>
       <WelcomeContainer2 style={[{ backgroundColor: theme.backgroundColor }]}>
         <FormAct>
-        <SubTitle>Theme switch</SubTitle>
-        <ItemsViewDop>
-          <SetButtonText>Light mode</SetButtonText>
-          <Switch
-            value={darkMode}
-            onValueChange={(value) => {
-              setDarkMode(value);
-              EventRegister.emit('ChangeTheme', value);
-            }}
-          />
-          <SetButtonText>Dark mode</SetButtonText>
-        </ItemsViewDop>
+          <SubTitle>Theme switch</SubTitle>
+          <ItemsViewDop>
+            <SetButtonText>Light mode</SetButtonText>
+            <Switch
+              value={darkMode}
+              onValueChange={(value) => {
+                setDarkMode(value);
+                EventRegister.emit('ChangeTheme', value);
+              }}
+            />
+            <SetButtonText>Dark mode</SetButtonText>
+          </ItemsViewDop>
         </FormAct>
 
         <FormAct>
-        <SubTitle>Language switch</SubTitle>
-        <ItemsViewDop>
-          <SetButtonText>English</SetButtonText>
-          <Switch
-            value={darkMode}
-            onValueChange={(value) => {
-              setDarkMode(value);
-              EventRegister.emit('ChangeTheme', value);
-            }}
-          />
-          <SetButtonText>Russian</SetButtonText>
-        </ItemsViewDop>
+          <SubTitle>Language switch</SubTitle>
+          <ItemsViewDop>
+            <SetButtonText>{language === 'en' ? 'English' : 'Русский'}</SetButtonText>
+            <Switch
+              value={darkMode}
+              onValueChange={() => {
+                i18n.changeLanguage(language === 'ru' ? 'en' : 'ru');
+              }}
+            />
+          </ItemsViewDop>
         </FormAct>
       </WelcomeContainer2>
     </>

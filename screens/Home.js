@@ -1,4 +1,6 @@
-import React, { useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native';
 import themeContext from '../theme/themeContext';
 import {
@@ -11,15 +13,13 @@ import {
   WelcomeContainer6,
   WelcomeImage,
 } from './../components/styles';
-import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
   const theme = useContext(themeContext);
-  const [searchQuery, setSearchQuery] = useState('');
-  const onChangeSearch = (query) => setSearchQuery(query);
-  const [darkMode, setDarkMode] = useState(false);
+  const { t } = useTranslation(['common', 'calculators']);
   const navigation = useNavigation();
-  console.log(navigation.getState());
+  // t('fileName:имяОбъекта')
+  // t('calculators:twuCalc')
   return (
     <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
       <WelcomeContainer6 style={[{ backgroundColor: theme.backgroundColor }]}>
@@ -33,11 +33,11 @@ const Home = () => {
           <ItemsView>
             <StyledButtonMain onPress={() => navigation.navigate('Calculator')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')} />
-              <MenuButtonText>Calculators</MenuButtonText>
+              <MenuButtonText>{t('common:calculators')}</MenuButtonText>
             </StyledButtonMain>
             <StyledButtonMain onPress={() => navigation.navigate('Patients')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/patient.png')} />
-              <MenuButtonText>My patients</MenuButtonText>
+              <MenuButtonText>{t('calculators:twuCalc')}</MenuButtonText>
             </StyledButtonMain>
           </ItemsView>
           <ItemsView>
