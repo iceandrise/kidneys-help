@@ -82,16 +82,6 @@ const Login = ({ navigation }) => {
 
                 <Line />
 
-                <StyledButton google={true} onPress={handleSubmit}>
-                  <Fontisto name="google" color={primary} size={25} />
-                  <ButtonText google={true}>Sign In with Google</ButtonText>
-                </StyledButton>
-                <ExtraView>
-                  <ExtraText>Don't have an account? </ExtraText>
-                  <TextLink onPress={() => navigation.navigate('Signup')}>
-                    <TextLinkContent>Signup now!</TextLinkContent>
-                  </TextLink>
-                </ExtraView>
               </StyledFormArea>
             )}
           </Formik>

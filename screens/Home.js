@@ -23,9 +23,6 @@ const Home = () => {
   return (
     <SafeAreaView style={{ flex: 1, paddingLeft: 24 }}>
       <WelcomeContainer6 style={[{ backgroundColor: theme.backgroundColor }]}>
-        <TextLink2 onPress={() => navigation.navigate('Options')}>
-          <TextLinkContent2>More</TextLinkContent2>
-        </TextLink2>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
       </WelcomeContainer6>
       <>
@@ -33,31 +30,35 @@ const Home = () => {
           <ItemsView>
             <StyledButtonMain onPress={() => navigation.navigate('Calculator')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/calculator.png')} />
-              <MenuButtonText>{t('common:calculators')}</MenuButtonText>
+              <MenuButtonText>{t('common:Calculators')}</MenuButtonText>
             </StyledButtonMain>
             <StyledButtonMain onPress={() => navigation.navigate('Patients')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/patient.png')} />
-              <MenuButtonText>{t('calculators:twuCalc')}</MenuButtonText>
+              <MenuButtonText>{t('calculators:Patients')}</MenuButtonText>
             </StyledButtonMain>
           </ItemsView>
           <ItemsView>
-            <StyledButtonMain onPress={() => navigation.navigate('Premium')}>
-              <WelcomeImage resizeMode="cover" source={require('./../assets/image/premium.png')} />
-              <MenuButtonText>Premium</MenuButtonText>
-            </StyledButtonMain>
             <StyledButtonMain onPress={() => navigation.navigate('Diary')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/book.png')} />
-              <MenuButtonText>Patient's diary</MenuButtonText>
+              <MenuButtonText>{t('calculators:Patient')}</MenuButtonText>
+              <MenuButtonText>{t('calculators:diary')}</MenuButtonText>
+            </StyledButtonMain>
+            <StyledButtonMain onPress={() => navigation.navigate('ContactUs')}>
+              <WelcomeImage resizeMode="cover" source={require('./../assets/image/contact.png')} />
+              <MenuButtonText>{t('calculators:Contact')}</MenuButtonText>
+              <MenuButtonText>{t('calculators:us')}</MenuButtonText>
             </StyledButtonMain>
           </ItemsView>
           <ItemsView>
+          <StyledButtonMain onPress={() => navigation.navigate('Options')}>
+              <WelcomeImage resizeMode="cover" source={require('./../assets/image/add.png')} />
+              <MenuButtonText>{t('calculators:Optional')}</MenuButtonText>
+            </StyledButtonMain>
             <StyledButtonMain>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/info.png')} />
-              <MenuButtonText>Help with app</MenuButtonText>
-            </StyledButtonMain>
-            <StyledButtonMain onPress={() => navigation.navigate('Payment')}>
-              <WelcomeImage resizeMode="cover" source={require('./../assets/image/payment.png')} />
-              <MenuButtonText>Payment</MenuButtonText>
+              <MenuButtonText>{t('calculators:Help')}</MenuButtonText>
+              <MenuButtonText>{t('calculators:with')}</MenuButtonText>
+              <MenuButtonText>{t('calculators:app')}</MenuButtonText>
             </StyledButtonMain>
           </ItemsView>
         </WelcomeContainer2>

@@ -57,15 +57,13 @@ const ContactUs = ({ navigation }) => {
             <Fontisto name="facebook" color={brand} size={25} />
             <MenuButtonText>Contact us with Facebook</MenuButtonText>
           </StyledButtonCalc>
-        </TextView>
-        {isAvailable ? (
-          <StyledButtonCalc onPress={sendMail}>
+
+          <StyledButtonCalc onPress={() => Linking.openURL('https://mail.google.com/mail/u/0/#inbox?compose=new')}>
             <Fontisto name="email" color={brand} size={25} />
-            <MenuButtonText>Send message to us</MenuButtonText>
+            <MenuButtonText>Contact us with Gmail</MenuButtonText>
+            <MenuButtonText>kidneyshelp000@gmail.com</MenuButtonText>
           </StyledButtonCalc>
-        ) : (
-          <SubTitle>Email isn't available!</SubTitle>
-        )}
+        </TextView>
       </WelcomeContainer2>
     </>
   );

@@ -93,9 +93,6 @@ const Diary = ({ navigation }) => {
                 />
                 <CalcButtonText>Liquid consumed</CalcButtonText>
               </TextView4>
-              <StyledButtonAct>
-                <ActButtonText>Add</ActButtonText>
-              </StyledButtonAct>
               <DropDownPicker
                 open={open}
                 defaultValue={value}

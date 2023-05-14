@@ -30,10 +30,6 @@ const Calculator = ({ navigation }) => {
         <MainTitle>Calculators</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
-        <TextView>
-          <PageTitle>Available</PageTitle>
-          <SubTitle>Try for free!</SubTitle>
-        </TextView>
 
         <StyledButtonCalc onPress={() => navigation.navigate('TwucCalc')}>
           <CalcButtonText>Total weekly urea clearance calculate</CalcButtonText>
@@ -44,14 +40,12 @@ const Calculator = ({ navigation }) => {
         <StyledButtonCalc onPress={() => navigation.navigate('Watson')}>
           <CalcButtonText>Total amount of water for adults by Watson</CalcButtonText>
         </StyledButtonCalc>
+        <StyledButtonCalc onPress={() => navigation.navigate('HumeWeyers')}>
+          <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
+        </StyledButtonCalc>
         <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
           <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>
         </StyledButtonCalc>
-        <TextView>
-        <TextLink onPress={() => navigation.navigate('Premium')}>
-          <TextLinkContent>Want more? Go to Premium calculators!</TextLinkContent>
-        </TextLink>
-        </TextView>
       </WelcomeContainer2>
     </>
   );

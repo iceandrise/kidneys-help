@@ -41,7 +41,6 @@ const Patients = ({ navigation }) => {
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>
-          <Searchbar placeholder="Search patient" onChangeText={onChangeSearch} value={searchQuery} />
           <StyledButtonAct onPress={() => navigation.navigate('AddPatient')}>
             <ActButtonText>New</ActButtonText>
           </StyledButtonAct>

@@ -39,12 +39,6 @@ const Options = ({ navigation }) => {
           </TextLink>
         </ItemsViewDop>
         <ItemsViewDop>
-          <WelcomeImage resizeMode="cover" source={require('./../assets/image/contact.png')} />
-          <TextLink onPress={() => navigation.navigate('ContactUs')}>
-            <TextContent>Contact Us</TextContent>
-          </TextLink>
-        </ItemsViewDop>
-        <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/logout.png')} />
           <TextLink onPress={() => logOut()}>
             <TextContent>Logout</TextContent>
