@@ -239,6 +239,35 @@ export const WelcomeImage = styled.Image`
   margin: 10px;
 `;
 
+export const Main1Image = styled.Image`
+  width: 150px;
+  height: 50px;
+  justify-content: center;
+  margin: 5px;
+`;
+
+export const Main2Image = styled.Image`
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  margin: 5px;
+`;
+
+export const Main3Image = styled.Image`
+  width: 250px;
+  height: 50px;
+  justify-content: center;
+  margin: 5px;
+`;
+
+
+export const Main4Image = styled.Image`
+  width: 190px;
+  height: 60px;
+  justify-content: center;
+  margin: 5px;
+`;
+
 export const MainImage = styled.Image`
   width: 250px;
   height: 250px;

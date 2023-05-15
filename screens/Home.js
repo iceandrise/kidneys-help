@@ -54,7 +54,7 @@ const Home = () => {
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/add.png')} />
               <MenuButtonText>{t('calculators:Optional')}</MenuButtonText>
             </StyledButtonMain>
-            <StyledButtonMain>
+            <StyledButtonMain onPress={() => navigation.navigate('Help')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/info.png')} />
               <MenuButtonText>{t('calculators:Help')}</MenuButtonText>
               <MenuButtonText>{t('calculators:with')}</MenuButtonText>

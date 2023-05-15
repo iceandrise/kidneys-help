@@ -37,6 +37,7 @@ import WatsonResults from '../screens/WatsonResults';
 import { LiquidChart } from '../screens/LiquidChart';
 import { PreasureChart } from '../screens/PreasureChart';
 import { WeightChart } from '../screens/WeightChart';
+import Help from '../screens/Help';
 
 const { primary, tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -78,6 +79,7 @@ const RootStack = () => {
               {/* <Stack.Screen name="Signup" component={Signup} /> */}
               <Stack.Screen name="Options" component={Options} />
               <Stack.Screen name="Terms" component={Terms} />
+              <Stack.Screen name="Help" component={Help} />
               <Stack.Screen name="Privacy" component={Privacy} />
               <Stack.Screen name="Calculator" component={Calculator} />
               <Stack.Screen name="Patients" component={Patients} options={{}} />
