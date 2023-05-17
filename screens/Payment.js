@@ -19,6 +19,7 @@ import {
   TextView,
 } from './../components/styles';
 import { Searchbar } from 'react-native-paper';
+import { useSubscriptionContext } from '../provider/SubscribeProvider';
 
 const Payment = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,6 +29,7 @@ const Payment = ({ navigation }) => {
   const [yy, OnChangeYY] = useState('');
   const [cvv, OnChangeCVV] = useState('');
   const onChangeSearch = (query) => setSearchQuery(query);
+  const { onSubscribe } = useSubscriptionContext();
   return (
     <>
       <StatusBar style="light" />
@@ -50,10 +52,16 @@ const Payment = ({ navigation }) => {
           </TextView>
           <TextView>
             <CalcButtonText>CARD HOLDER</CalcButtonText>
-            <TextInput style={styles.input} keyboardType="default" maxLength={20} onChangeText={OnChangeCardHolder} value={cardHolder} />
+            <TextInput
+              style={styles.input}
+              keyboardType="default"
+              maxLength={20}
+              onChangeText={OnChangeCardHolder}
+              value={cardHolder}
+            />
           </TextView>
-          </TextView>
-          <TextView4>
+        </TextView>
+        <TextView4>
           <TextView5>
             <CalcButtonText>MM</CalcButtonText>
             <TextInput
@@ -84,10 +92,15 @@ const Payment = ({ navigation }) => {
               value={cvv}
             />
           </TextView5>
-          </TextView4>
-          <ResCalc>
-            <MenuButtonText>Pay</MenuButtonText>
-          </ResCalc>
+        </TextView4>
+        <ResCalc
+          onPress={() => {
+            onSubscribe();
+            navigation.navigate('Calculator');
+          }}
+        >
+          <MenuButtonText>Pay</MenuButtonText>
+        </ResCalc>
       </WelcomeContainer2>
     </>
   );

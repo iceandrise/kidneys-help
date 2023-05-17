@@ -260,7 +260,6 @@ export const Main3Image = styled.Image`
   margin: 5px;
 `;
 
-
 export const Main4Image = styled.Image`
   width: 190px;
   height: 60px;
@@ -336,7 +335,7 @@ export const TextView4 = styled.View`
 `;
 
 export const ItemsViewDop = styled.View`
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: row;
   padding: 15px;
   width: 100%;
@@ -376,6 +375,7 @@ export const MoreButtonText = styled.Text`
 export const StyledButtonCalc = styled.TouchableOpacity`
   border-width: 1px;
   border-color: ${brand};
+  background-color: ${(props) => props.color || lightback};
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -437,7 +437,7 @@ export const StyledButtonAct = styled.TouchableOpacity`
 export const StyledButtonPremium = styled.TouchableOpacity`
   border-width: 1px;
   border-color: ${brand};
-  background-color: ${lightback};
+  background-color: ${(props) => (props.color ? props.color : lightback)};
   justify-content: center;
   align-items: center;
   border-radius: 5px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Button, TouchableOpacity } from 'react-native';
+import { View, Button, TouchableOpacity, ActivityIndicator } from 'react-native';
 import {
   InnerContainer,
   PageTitle,
@@ -20,8 +20,10 @@ import {
   MainTitle,
   TextView,
 } from './../components/styles';
+import { useSubscriptionContext } from '../provider/SubscribeProvider';
 
 const Calculator = ({ navigation }) => {
+  const { isSubscribed, loading } = useSubscriptionContext();
   return (
     <>
       <StatusBar style="light" />
@@ -30,7 +32,6 @@ const Calculator = ({ navigation }) => {
         <MainTitle>Calculators</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
-
         <StyledButtonCalc onPress={() => navigation.navigate('TwucCalc')}>
           <CalcButtonText>Total weekly urea clearance calculate</CalcButtonText>
         </StyledButtonCalc>
@@ -40,8 +41,16 @@ const Calculator = ({ navigation }) => {
         <StyledButtonCalc onPress={() => navigation.navigate('Watson')}>
           <CalcButtonText>Total amount of water for adults by Watson</CalcButtonText>
         </StyledButtonCalc>
-        <StyledButtonCalc onPress={() => navigation.navigate('HumeWeyers')}>
-          <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
+
+        <StyledButtonCalc
+          color={!isSubscribed ? '#e0ddd3' : undefined}
+          onPress={() => navigation.navigate(isSubscribed ? 'HumeWeyers' : 'Premium')}
+        >
+          {loading ? (
+            <ActivityIndicator />
+          ) : (
+            <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
+          )}
         </StyledButtonCalc>
         <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
           <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>

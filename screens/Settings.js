@@ -17,11 +17,10 @@ import {
 const Settings = ({ navigation }) => {
   const theme = useContext(themeContext);
   const { i18n } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState('');
-  const onChangeSearch = (query) => setSearchQuery(query);
+
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState(i18n.language);
-
+  const [checkLang, setCheckLang] = useState(language === 'ru');
   return (
     <>
       <WelcomeContainer style={[{ backgroundColor: theme.backgroundColor }]}>
@@ -47,10 +46,11 @@ const Settings = ({ navigation }) => {
         <FormAct>
           <SubTitle>Language switch</SubTitle>
           <ItemsViewDop>
-            <SetButtonText>{language === 'en' ? 'English' : 'Русский'}</SetButtonText>
+            <SetButtonText>{!checkLang ? 'English' : 'Русский'}</SetButtonText>
             <Switch
-              value={darkMode}
-              onValueChange={() => {
+              value={checkLang}
+              onValueChange={(value) => {
+                setCheckLang(value);
                 i18n.changeLanguage(language === 'ru' ? 'en' : 'ru');
               }}
             />

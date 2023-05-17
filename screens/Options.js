@@ -9,6 +9,7 @@ import {
   WelcomeImage,
 } from './../components/styles';
 import { useAuthContext } from '../provider/AuthContext';
+import { View } from 'react-native';
 
 const Options = ({ navigation }) => {
   const { logOut } = useAuthContext();

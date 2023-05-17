@@ -34,18 +34,17 @@ const Premium = ({ navigation }) => {
           <PageTitle>Premium</PageTitle>
           <SubTitle>Try premium calculators by only 10$!</SubTitle>
         </TextView>
-        {/* open after pay */}
-        {/* <StyledButtonPremium onPress={() => navigation.navigate('Payment')}> */} 
-        <StyledButtonPremium onPress={() => navigation.navigate('HumeWeyers')}>
-          <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
+
+        <StyledButtonPremium onPress={() => navigation.navigate('Payment')}>
+          <CalcButtonText>Pay</CalcButtonText>
         </StyledButtonPremium>
         <StyledButtonPremium onPress={() => navigation.navigate('Payment')}>
           <CalcButtonText>!!! calculate</CalcButtonText>
         </StyledButtonPremium>
         <TextView>
-        <TextLink onPress={() => navigation.navigate('Calculator')}>
-          <TextLinkContent>Go to Free calculators!</TextLinkContent>
-        </TextLink>
+          <TextLink onPress={() => navigation.navigate('Calculator')}>
+            <TextLinkContent>Go to Free calculators!</TextLinkContent>
+          </TextLink>
         </TextView>
       </WelcomeContainer2>
     </>
