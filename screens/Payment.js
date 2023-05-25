@@ -21,6 +21,7 @@ import {
 import { Searchbar } from 'react-native-paper';
 import { useSubscriptionContext } from '../provider/SubscribeProvider';
 
+
 const Payment = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [cardNumber, OnChangeCardNumber] = useState('');
@@ -45,7 +46,7 @@ const Payment = ({ navigation }) => {
             <TextInput
               style={styles.input}
               maxLength={16}
-              keyboardType="default"
+              keyboardType="number-pad"
               onChangeText={OnChangeCardNumber}
               value={cardNumber}
             />

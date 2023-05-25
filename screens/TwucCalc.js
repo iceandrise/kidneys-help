@@ -66,11 +66,12 @@ const TwucCalc = () => {
       singlePool,
     } = input;
 
-    let eqClearance = singlePool * (durationHemo / (durationHemo + 30.7));
-    let perem = Math.pow(Math.exp(-1 * eqClearance), 2);
+    let eqClearance = singlePool *(( 0.47 * singlePool) / durationHemo) + 0.02;
+    let N = -1*eqClearance;
+    let perem = Math.pow(2.71, N);
 
     let stClearance =
-      (10080 * (1 - perem)) / ((1 - perem) / eqClearance + (10080 / (frequencySessions * durationHemo) - 1));
+      (10080 - perem) / ( ((1 - perem) / eqClearance) + (10080 / (frequencySessions * durationHemo)) - 1);
     let distributionUrea = 1;
 
     if (sexType === 'male') {
@@ -80,21 +81,28 @@ const TwucCalc = () => {
     }
     let cPlasmaUrea = 1;
     let wUrineVolume = 1;
-    let cNativeClearance = 1;
-    let nativeClearance = (1000 * dailyVolume * (urineUrea / 0.1665)) / (2.8 * cPlasmaUrea) / 1440;
+  
+    
 
     if (period === 'short') {
-      cNativeClearance = nativeClearance * 0.99;
-      wUrineVolume = dailyVolume * 0.98 * 7;
+      wUrineVolume = dailyVolume * 6.86;
       cPlasmaUrea = ureaBlood * 0.92;
     } else if (period === 'long') {
-      cNativeClearance = nativeClearance * 0.81;
-      wUrineVolume = dailyVolume * 0.73 * 7;
+      wUrineVolume = dailyVolume * 5.11;
       cPlasmaUrea = ureaBlood * 0.98;
     }
 
+    let nativeClearance = ((1000 * dailyVolume * (urineUrea / 0.1665)) / (2.8 * cPlasmaUrea)) / 1440;
+    let cNativeClearance = 1;
+
+    if (period === 'short') {
+      cNativeClearance = nativeClearance * 0.99;
+    } else if (period === 'long') {
+      cNativeClearance = nativeClearance * 0.81;
+    }
+
     let removeFluid = fluidIntake - wUrineVolume;
-    let stDiaClearance = stClearance / ((1 - 0.74 / frequencySessions) * (removeFluid / distributionUrea));
+    let stDiaClearance = stClearance/( 1 - (0.74 / frequencySessions) * (removeFluid / distributionUrea) );
     let stWeeklyClearance = cNativeClearance * (10080 / distributionUrea);
     let twucClearance = stWeeklyClearance + stDiaClearance;
 

@@ -6,6 +6,7 @@ import themeContext from '../theme/themeContext';
 import {
   FormAct,
   ItemsViewDop,
+  IViewDop,
   MainTitle,
   SetButtonText,
   SubTitle,
@@ -17,6 +18,7 @@ import {
 const Settings = ({ navigation }) => {
   const theme = useContext(themeContext);
   const { i18n } = useTranslation();
+  const { t } = useTranslation(['common', 'calculators']);
 
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState(i18n.language);
@@ -29,9 +31,12 @@ const Settings = ({ navigation }) => {
       </WelcomeContainer>
       <WelcomeContainer2 style={[{ backgroundColor: theme.backgroundColor }]}>
         <FormAct>
-          <SubTitle>Theme switch</SubTitle>
-          <ItemsViewDop>
-            <SetButtonText>Light mode</SetButtonText>
+          
+          <SubTitle>{t('calculators:Theme')}</SubTitle>
+         
+         
+          <IViewDop>
+            <SetButtonText>{t('calculators:Light')}</SetButtonText>
             <Switch
               value={darkMode}
               onValueChange={(value) => {
@@ -39,13 +44,13 @@ const Settings = ({ navigation }) => {
                 EventRegister.emit('ChangeTheme', value);
               }}
             />
-            <SetButtonText>Dark mode</SetButtonText>
-          </ItemsViewDop>
+            <SetButtonText>{t('calculators:Dark')}</SetButtonText>
+          </IViewDop>
         </FormAct>
 
         <FormAct>
-          <SubTitle>Language switch</SubTitle>
-          <ItemsViewDop>
+        <SubTitle>{t('calculators:Language')}</SubTitle>
+          <IViewDop>
             <SetButtonText>{!checkLang ? 'English' : 'Русский'}</SetButtonText>
             <Switch
               value={checkLang}
@@ -54,7 +59,7 @@ const Settings = ({ navigation }) => {
                 i18n.changeLanguage(language === 'ru' ? 'en' : 'ru');
               }}
             />
-          </ItemsViewDop>
+          </IViewDop>
         </FormAct>
       </WelcomeContainer2>
     </>

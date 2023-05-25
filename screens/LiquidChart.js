@@ -46,7 +46,7 @@ export const LiquidChart = () => {
   );
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>WeightChart</Text>
+      <Text style={styles.header}>LiquidChart</Text>
       {!loading ? (
         <LineChart
           data={{

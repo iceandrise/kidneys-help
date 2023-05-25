@@ -341,6 +341,12 @@ export const ItemsViewDop = styled.View`
   width: 100%;
 `;
 
+export const IViewDop = styled.View`
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+`;
+
 export const MenuButtonText = styled.Text`
   color: ${brand};
   font-weight: bold;

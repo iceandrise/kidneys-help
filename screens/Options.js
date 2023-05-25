@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ItemsViewDop,
   TextContent,
@@ -13,6 +14,7 @@ import { View } from 'react-native';
 
 const Options = ({ navigation }) => {
   const { logOut } = useAuthContext();
+  const { t } = useTranslation(['common', 'calculators']);
   return (
     <>
       <StatusBar style="light" />
@@ -24,13 +26,14 @@ const Options = ({ navigation }) => {
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/setting.png')} />
           <TextLink onPress={() => navigation.navigate('Settings')}>
-            <TextContent>Settings</TextContent>
+            <TextContent>{t('calculators:Settings')}</TextContent>
           </TextLink>
         </ItemsViewDop>
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/condition.png')} />
           <TextLink onPress={() => navigation.navigate('Terms')}>
-            <TextContent>Terms and Conditions</TextContent>
+            <TextContent>{t('calculators:Terms&Conditions')}</TextContent>
+           
           </TextLink>
         </ItemsViewDop>
         <ItemsViewDop>

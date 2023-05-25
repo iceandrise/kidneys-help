@@ -13,7 +13,7 @@ import {
   MsgBox,
   StyledContainer,
   TextLinkContent,
-  TextLink,
+  TextContent,
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
@@ -41,6 +41,12 @@ const Calculator = ({ navigation }) => {
         <StyledButtonCalc onPress={() => navigation.navigate('Watson')}>
           <CalcButtonText>Total amount of water for adults by Watson</CalcButtonText>
         </StyledButtonCalc>
+        <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
+          <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>
+        </StyledButtonCalc>
+        <TextContent>
+          Try additional calculator!
+        </TextContent>
 
         <StyledButtonCalc
           color={!isSubscribed ? '#e0ddd3' : undefined}
@@ -51,9 +57,6 @@ const Calculator = ({ navigation }) => {
           ) : (
             <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
           )}
-        </StyledButtonCalc>
-        <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
-          <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>
         </StyledButtonCalc>
       </WelcomeContainer2>
     </>

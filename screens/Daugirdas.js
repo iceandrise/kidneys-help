@@ -36,8 +36,8 @@ const Daugirdas = ({ navigation }) => {
   const test = (input) => {
     const { postUrea, preUrea, UF, Weight, durationHemo } = input;
 
-    let singlePool = -1 * Math.log2((postUrea / preUrea) - 0.03) + (4 - 3.5 * (postUrea / preUrea)) * (UF / Weight);
-    let adequacy = singlePool - 0.47 * singlePool * durationHemo + 0.02;
+    let singlePool = -1 * (Math.log((postUrea / preUrea) - 0.03)) + (4 - 3.5 * (postUrea / preUrea)) * (UF / Weight);
+    let adequacy = singlePool *(( 0.47 * singlePool) / durationHemo) + 0.02;
 
     const result = {
       patientId: selectedItem,

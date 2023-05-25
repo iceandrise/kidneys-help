@@ -7,5 +7,9 @@
   "Help": "Help",
   "with": "with",
   "app": "app",
-  "Optional": "Optional"
+  "Optional": "Optional",
+  "Theme": "Theme",
+  "Language": "Language",
+  "Light": "Light",
+  "Dark": "Dark"
 }

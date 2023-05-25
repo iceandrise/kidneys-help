@@ -38,9 +38,6 @@ const Premium = ({ navigation }) => {
         <StyledButtonPremium onPress={() => navigation.navigate('Payment')}>
           <CalcButtonText>Pay</CalcButtonText>
         </StyledButtonPremium>
-        <StyledButtonPremium onPress={() => navigation.navigate('Payment')}>
-          <CalcButtonText>!!! calculate</CalcButtonText>
-        </StyledButtonPremium>
         <TextView>
           <TextLink onPress={() => navigation.navigate('Calculator')}>
             <TextLinkContent>Go to Free calculators!</TextLinkContent>

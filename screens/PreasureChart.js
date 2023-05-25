@@ -46,7 +46,7 @@ export const PreasureChart = () => {
   );
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>WeightChart</Text>
+      <Text style={styles.header}>PreasureChart</Text>
       {!loading ? (
         <LineChart
           data={{
