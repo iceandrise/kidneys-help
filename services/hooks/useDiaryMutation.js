@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../connection';
 
@@ -9,12 +9,21 @@ export const useDiaryMutation = () => {
     setLoading(true);
     try {
       if (collectionName) {
-        // const resultDocRef = doc(collection(db, 'Patients'), input.patientId);
-        const docRef = await addDoc(collection(db, collectionName), {
-          ...input,
-          // patientRef: resultDocRef,
-        });
-        console.log('Document written with ID: ', docRef);
+        const collectionRef = collection(db, collectionName);
+        const existDocRef = query(collectionRef, where('day', '==', input.day));
+        const querySnapshot = await getDocs(existDocRef);
+        if (querySnapshot.empty) {
+          const docRef = await addDoc(collectionRef, {
+            ...input,
+            created_at: new Date(),
+          });
+          console.log('Document written with ID: ', docRef);
+        } else {
+          const documentId = querySnapshot.docs[0].id;
+          const documentRef = doc(collectionRef, documentId);
+          await updateDoc(documentRef, { inputParameter: input.inputParameter });
+          console.log('Document updated with ID: ', documentRef.id);
+        }
       }
       setLoading(false);
     } catch (err) {
