@@ -56,9 +56,7 @@ const Home = () => {
             </StyledButtonMain>
             <StyledButtonMain onPress={() => navigation.navigate('Help')}>
               <WelcomeImage resizeMode="cover" source={require('./../assets/image/info.png')} />
-              <MenuButtonText>{t('calculators:Help')}</MenuButtonText>
-              <MenuButtonText>{t('calculators:with')}</MenuButtonText>
-              <MenuButtonText>{t('calculators:app')}</MenuButtonText>
+              <MenuButtonText>{t('common:Help_with_app')}</MenuButtonText>
             </StyledButtonMain>
           </ItemsView>
         </WelcomeContainer2>

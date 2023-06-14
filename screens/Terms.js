@@ -23,7 +23,7 @@ const Terms = ({ navigation }) => {
       </WelcomeContainer6>
       <>
       <WelcomeContainer2>
-        <PageTitle>{t('common:T1')}</PageTitle>
+        <PageTitle>{t('common:Terms')}</PageTitle>
         <TextLink2>
           <TextContent>
           {t('common:T1')}

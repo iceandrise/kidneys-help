@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react
 import DropDownPicker from 'react-native-dropdown-picker';
 import { RadioButton } from 'react-native-paper';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
 import { useGetPatients } from '../services/hooks/useGetPatients';
 import {
@@ -43,6 +44,7 @@ const TwucCalc = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [sexType, setSexType] = useState('male');
   const [period, setPeriod] = useState('short');
+  const { t } = useTranslation(['common', 'calculators']);
 
   const items = useMemo(() => {
     const result = patients.map((patient) => ({
@@ -151,15 +153,15 @@ const TwucCalc = () => {
             <WelcomeContainer6>
               {/* <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} /> */}
 
-              <MainTitle>TwucCalc</MainTitle>
+              <MainTitle>{t('common:TwucCalc')}</MainTitle>
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
                 <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(TWUC_CALC)}>
-                  <Text>Show Reports</Text>
+                  <Text>{t('common:Show_reports')}</Text>
                 </Button>
                 <TextView>
-                  <CalcButtonText>Choose patient:</CalcButtonText>
+                  <CalcButtonText>{t('common:Choose_patient')}</CalcButtonText>
 
                   <Box maxW="300">
                     <Select
@@ -183,7 +185,7 @@ const TwucCalc = () => {
                 </TextView>
 
                 <TextView>
-                  <CalcButtonText>Single pool kt/V</CalcButtonText>
+                  <CalcButtonText>{t('common:Single_pool_ktV')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -195,7 +197,7 @@ const TwucCalc = () => {
                   {touched.singlePool && errors.singlePool && <Text style={styles.errorTxt}>{errors.singlePool}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Duration of hemodialysis session (min)</CalcButtonText>
+                  <CalcButtonText>{t('common:Duration_of_hemodialysis_session')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -209,7 +211,7 @@ const TwucCalc = () => {
                   )}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Frequency of hemodialysis sessions per week (times)</CalcButtonText>
+                  <CalcButtonText>{t('common:Frequency_of_hemodialysis_sessions_per_week')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -223,7 +225,7 @@ const TwucCalc = () => {
                   )}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Daily urine volume (l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Daily_urine_volume')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -237,7 +239,7 @@ const TwucCalc = () => {
                   )}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Weekly fluid intake (l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Weekly_fluid_intake')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -251,7 +253,7 @@ const TwucCalc = () => {
                   )}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Urine urea consentration (mmol/l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Urine_urea_consentration')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -263,7 +265,7 @@ const TwucCalc = () => {
                   {touched.urineUrea && errors.urineUrea && <Text style={styles.errorTxt}>{errors.urineUrea}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Urea content in blood plasmabefore hemodialysis (mmol/l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Urea_content_in_blood_plasmabefore_hemodialysis')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -275,7 +277,7 @@ const TwucCalc = () => {
                   {touched.ureaBlood && errors.ureaBlood && <Text style={styles.errorTxt}>{errors.ureaBlood}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Metdyalisis period (in days)</CalcButtonText>
+                  <CalcButtonText>{t('common:Metdyalisis_period')}</CalcButtonText>
                   <TextView3>
                     <Radio.Group
                       name="myRadioGroup"
@@ -286,16 +288,16 @@ const TwucCalc = () => {
                       }}
                     >
                       <Radio value="short" my={1}>
-                        <Text>{'Short'}</Text>
+                        <Text>{t('common:Short')}</Text>
                       </Radio>
                       <Radio value="long" my={1}>
-                        <Text>{'Long'}</Text>
+                        <Text>{t('common:Long')}</Text>
                       </Radio>
                     </Radio.Group>
                   </TextView3>
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Age</CalcButtonText>
+                  <CalcButtonText>{t('common:Age')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={2}
@@ -307,7 +309,7 @@ const TwucCalc = () => {
                   {touched.age && errors.age && <Text style={styles.errorTxt}>{errors.age}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Height (cm)</CalcButtonText>
+                  <CalcButtonText>{t('common:Height')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -319,7 +321,7 @@ const TwucCalc = () => {
                   {touched.heightP && errors.heightP && <Text style={styles.errorTxt}>{errors.heightP}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Weight (kg)</CalcButtonText>
+                  <CalcButtonText>{t('common:Weight')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -331,7 +333,7 @@ const TwucCalc = () => {
                   {touched.widthP && errors.widthP && <Text style={styles.errorTxt}>{errors.widthP}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Sex</CalcButtonText>
+                  <CalcButtonText>{t('common:Sex')}</CalcButtonText>
                   <Radio.Group
                     name="myRadioGroup"
                     accessibilityLabel="favorite number"
@@ -341,10 +343,10 @@ const TwucCalc = () => {
                     }}
                   >
                     <Radio value="male" my={1}>
-                      <Text>{'Male'}</Text>
+                      <Text>{t('common:Male')}</Text>
                     </Radio>
                     <Radio value="female" my={1}>
-                      <Text>{'Female'}</Text>
+                      <Text>{t('common:Female')}</Text>
                     </Radio>
                   </Radio.Group>
                 </TextView>
@@ -354,7 +356,7 @@ const TwucCalc = () => {
                   disabled={!isValid}
                   style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
                 >
-                  <Text style={styles.submitBtnText}>Save Result</Text>
+                  <Text style={styles.submitBtnText}>{t('common:Save_Result')}</Text>
                 </TouchableOpacity>
               </WelcomeContainer2>
             </>
