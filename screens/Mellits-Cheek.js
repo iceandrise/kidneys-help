@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react
 import DropDownPicker from 'react-native-dropdown-picker';
 import { RadioButton } from 'react-native-paper';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
 import { useGetPatients } from '../services/hooks/useGetPatients';
 import {
@@ -28,6 +29,7 @@ const SignUpSchema = Yup.object().shape({
 
 const MellitsCheek = ({ navigation }) => {
   const { navigate } = useNavigation();
+  const { t } = useTranslation(['common', 'calculators']);
   const { addCalcResult, loading } = useCalcResultMutation();
   const { patients } = useGetPatients();
   const [sexType, setSexType] = useState('male');
@@ -82,15 +84,15 @@ const MellitsCheek = ({ navigation }) => {
             <WelcomeContainer6>
               {/* <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} /> */}
 
-              <MainTitle>Water by Mellits-Cheek</MainTitle>
+              <MainTitle>{t('common:Water_by_Mellits_Cheek')}</MainTitle>
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
                 <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(MELLITS_CHECK_CALC)}>
-                  <Text>Show Reports</Text>
+                  <Text>{t('common:Show_reports')}</Text>
                 </Button>
                 <TextView>
-                  <CalcButtonText>Choose patient:</CalcButtonText>
+                  <CalcButtonText>{t('common:Choose_patient')}</CalcButtonText>
 
                   <Box maxW="300">
                     <Select
@@ -113,7 +115,7 @@ const MellitsCheek = ({ navigation }) => {
                   </Box>
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Sex</CalcButtonText>
+                  <CalcButtonText>{t('common:Sex')}</CalcButtonText>
                   <Radio.Group
                     name="myRadioGroup"
                     accessibilityLabel="favorite number"
@@ -123,15 +125,15 @@ const MellitsCheek = ({ navigation }) => {
                     }}
                   >
                     <Radio value="male" my={1}>
-                      <Text>{'Male'}</Text>
+                      <Text>{t('common:Male')}</Text>
                     </Radio>
                     <Radio value="female" my={1}>
-                      <Text>{'Female'}</Text>
+                      <Text>{t('common:Female')}</Text>
                     </Radio>
                   </Radio.Group>
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Height (cm)</CalcButtonText>
+                  <CalcButtonText>{t('common:Height')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -143,7 +145,7 @@ const MellitsCheek = ({ navigation }) => {
                   {touched.heightP && errors.heightP && <Text style={styles.errorTxt}>{errors.heightP}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Weight (kg)</CalcButtonText>
+                  <CalcButtonText>{t('common:Weight')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -160,7 +162,7 @@ const MellitsCheek = ({ navigation }) => {
                   disabled={!isValid}
                   style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
                 >
-                  <Text style={styles.submitBtnText}>Save Result</Text>
+                  <Text style={styles.submitBtnText}>{t('common:Save_Result')}</Text>
                 </TouchableOpacity>
               </WelcomeContainer2>
             </>

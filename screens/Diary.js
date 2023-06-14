@@ -6,6 +6,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { RadioButton } from 'react-native-paper';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 import {
   ActButtonText,
   CalcButtonText,
@@ -32,6 +33,7 @@ const SignUpSchema = Yup.object().shape({
 const Diary = ({ navigation }) => {
   const [selectedDiary, setSelectedDiary] = useState('Preasure');
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation(['common', 'calculators']);
   const [value, setValue] = useState(1);
   const [items, setItems] = useState([
     { label: 'Monday', value: 1 },
@@ -65,7 +67,7 @@ const Diary = ({ navigation }) => {
           <StatusBar style="light" />
           <WelcomeContainer>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-            <MainTitle>Patient's Diary</MainTitle>
+            <MainTitle>{t('calculators:Patient_diary')}</MainTitle>
           </WelcomeContainer>
           <WelcomeContainer2>
             <TextView5>
@@ -75,7 +77,7 @@ const Diary = ({ navigation }) => {
                   status={selectedDiary === 'Preasure' ? 'checked' : 'unchecked'}
                   onPress={() => setSelectedDiary('Preasure')}
                 />
-                <CalcButtonText>Preasure</CalcButtonText>
+                <CalcButtonText>{t('calculators:Preasure')}</CalcButtonText>
               </TextView4>
               <TextView4>
                 <RadioButton
@@ -83,7 +85,7 @@ const Diary = ({ navigation }) => {
                   status={selectedDiary === 'Weight' ? 'checked' : 'unchecked'}
                   onPress={() => setSelectedDiary('Weight')}
                 />
-                <CalcButtonText>Weight</CalcButtonText>
+                <CalcButtonText>{t('calculators:Weight')}</CalcButtonText>
               </TextView4>
               <TextView4>
                 <RadioButton
@@ -91,7 +93,7 @@ const Diary = ({ navigation }) => {
                   status={selectedDiary === 'Liquid' ? 'checked' : 'unchecked'}
                   onPress={() => setSelectedDiary('Liquid')}
                 />
-                <CalcButtonText>Liquid consumed</CalcButtonText>
+                <CalcButtonText>{t('calculators:Liquid_consumed')}</CalcButtonText>
               </TextView4>
               <DropDownPicker
                 open={open}
@@ -121,14 +123,14 @@ const Diary = ({ navigation }) => {
                 disabled={!isValid}
                 style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
               >
-                <Text style={styles.submitBtnText}>Make chart</Text>
+                <Text style={styles.submitBtnText}>{t('calculators:Make_Chart')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => navigate(`${selectedDiary}Chart`)}
                 disabled={!isValid}
                 style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
               >
-                <Text style={styles.submitBtnText}>Show Chart</Text>
+                <Text style={styles.submitBtnText}>{t('calculators:Show_Chart')}</Text>
               </TouchableOpacity>
             </TextView5>
           </WelcomeContainer2>

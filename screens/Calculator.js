@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { useTranslation } from 'react-i18next';
 import { View, Button, TouchableOpacity, ActivityIndicator } from 'react-native';
 import {
   InnerContainer,
@@ -24,28 +25,29 @@ import { useSubscriptionContext } from '../provider/SubscribeProvider';
 
 const Calculator = ({ navigation }) => {
   const { isSubscribed, loading } = useSubscriptionContext();
+  const { t } = useTranslation(['common', 'calculators']);
   return (
     <>
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>Calculators</MainTitle>
+        <MainTitle>{t('common:Calculators')}</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <StyledButtonCalc onPress={() => navigation.navigate('TwucCalc')}>
-          <CalcButtonText>Total weekly urea clearance calculate</CalcButtonText>
+          <CalcButtonText>{t('common:Total_weekly_urea_clearance_calculate')}</CalcButtonText>
         </StyledButtonCalc>
         <StyledButtonCalc onPress={() => navigation.navigate('Daugirdas')}>
-          <CalcButtonText>Adequacy of hemodialysis Daugirdas</CalcButtonText>
+          <CalcButtonText>{t('common:Adequacy_of_hemodialysis_Daugirdas')}</CalcButtonText>
         </StyledButtonCalc>
         <StyledButtonCalc onPress={() => navigation.navigate('Watson')}>
-          <CalcButtonText>Total amount of water for adults by Watson</CalcButtonText>
+          <CalcButtonText>{t('common:Total_amount_of_water_for_adults_by_Watson')}</CalcButtonText>
         </StyledButtonCalc>
         <StyledButtonCalc onPress={() => navigation.navigate('MellitsCheek')}>
-          <CalcButtonText>Total amount of water for kids by Mellits-Cheek</CalcButtonText>
+          <CalcButtonText>{t('common:Total_amount_of_water_for_kids_by_Mellits_Cheek')}</CalcButtonText>
         </StyledButtonCalc>
         <TextContent>
-          Try additional calculator!
+        {t('common:Try_additional_calculator')}
         </TextContent>
 
         <StyledButtonCalc
@@ -55,7 +57,7 @@ const Calculator = ({ navigation }) => {
           {loading ? (
             <ActivityIndicator />
           ) : (
-            <CalcButtonText>Total amount of water for adults by Hume-Weyers</CalcButtonText>
+            <CalcButtonText>{t('common:Total_amount_of_water_for_adults_by_Hume_Weyers')}</CalcButtonText>
           )}
         </StyledButtonCalc>
       </WelcomeContainer2>

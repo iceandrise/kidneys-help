@@ -5,6 +5,7 @@ import { ActivityIndicator, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { useGetPatients } from '../services/hooks/useGetPatients';
 import { usePatientMutation } from '../services/hooks/usePatientMutation';
+import { useTranslation } from 'react-i18next';
 import {
   ActButtonText,
   CalcButtonText,
@@ -25,6 +26,7 @@ const Patients = ({ navigation }) => {
   const { patients, loading, refetch } = useGetPatients();
   const { removePatient } = usePatientMutation();
   const isFocused = useIsFocused();
+  const { t } = useTranslation(['common', 'calculators']);
   console.log('render', searchQuery);
   useEffect(() => {
     if (isFocused) {
@@ -37,12 +39,12 @@ const Patients = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>My patients</MainTitle>
+        <MainTitle>{t('common:My_patients')}</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>
           <StyledButtonAct onPress={() => navigation.navigate('AddPatient')}>
-            <ActButtonText>New</ActButtonText>
+            <ActButtonText>{t('common:New')}</ActButtonText>
           </StyledButtonAct>
         </TextView>
         <ScrollView style={{ flex: 1, width: '100%' }} showsVerticalScrollIndicator={false}>
@@ -52,9 +54,9 @@ const Patients = ({ navigation }) => {
               <StyledPatient key={patient.id}>
                 <ItemsView>
                   <TextView2>
-                    <CalcButtonText>Name Patient: {patient?.firstName}</CalcButtonText>
-                    <CalcButtonText>Surname Patient: {patient?.lastName}</CalcButtonText>
-                    <CalcButtonText>{patient?.room}</CalcButtonText>
+                    <CalcButtonText>{t('common:Name_patient')} {patient?.firstName}</CalcButtonText>
+                    <CalcButtonText>{t('common:Surname_patient')} {patient?.lastName}</CalcButtonText>
+                    <CalcButtonText>{t('common:Room')} {patient?.room}</CalcButtonText>
                   </TextView2>
 
                   <TextView2>
@@ -64,7 +66,7 @@ const Patients = ({ navigation }) => {
                         refetch();
                       }}
                     >
-                      <ActButtonText>Delete</ActButtonText>
+                      <ActButtonText>{t('common:Delete')}</ActButtonText>
                     </StyledButtonAct>
                   </TextView2>
                 </ItemsView>

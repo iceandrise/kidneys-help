@@ -11,5 +11,15 @@
   "Theme": "Theme",
   "Language": "Language",
   "Light": "Light",
-  "Dark": "Dark"
+  "Dark": "Dark",
+  "Terms&Conditions": "Terms&Conditions",
+  "Settings": "Settings",
+  "Privacy_Policy": "Privacy Policy",
+  "Logout": "Logout",
+  "Patient_diary": "Patient diary",
+  "Preasure": "Preasure",
+  "Weight": "Weight",
+  "Liquid_consumed": "Liquid consumed",
+  "Make_Chart": "Make Chart",
+  "Show_Chart": "Show Chart"
 }

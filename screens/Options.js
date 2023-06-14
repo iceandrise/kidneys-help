@@ -8,6 +8,7 @@ import {
   WelcomeContainer,
   WelcomeContainer2,
   WelcomeImage,
+  MainTitle,
 } from './../components/styles';
 import { useAuthContext } from '../provider/AuthContext';
 import { View } from 'react-native';
@@ -39,13 +40,13 @@ const Options = ({ navigation }) => {
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/privacy.png')} />
           <TextLink onPress={() => navigation.navigate('Privacy')}>
-            <TextContent>Privacy Policy</TextContent>
+            <TextContent>{t('calculators:Privacy_Policy')}</TextContent>
           </TextLink>
         </ItemsViewDop>
         <ItemsViewDop>
           <WelcomeImage resizeMode="cover" source={require('./../assets/image/logout.png')} />
           <TextLink onPress={() => logOut()}>
-            <TextContent>Logout</TextContent>
+            <TextContent>{t('calculators:Logout')}</TextContent>
           </TextLink>
         </ItemsViewDop>
       </WelcomeContainer2>

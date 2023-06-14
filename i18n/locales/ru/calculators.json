@@ -11,5 +11,16 @@
   "Theme": "Тема",
   "Language": "Язык",
   "Light": "Светлая",
-  "Dark": "Темная"
+  "Dark": "Темная",
+  "Terms&Conditions": "Условия и положения",
+  "Settings": "Настройки",
+  "Privacy_Policy": "Политика конфиденциальности",
+  "Logout": "Выйти",
+  "Patient_diary": "Дневник пациента",
+  "Preasure": "Давление",
+  "Weight": "Вес",
+  "Liquid_consumed": "Количество жидкости",
+  "Make_Chart": "Добавить",
+  "Show_Chart": "Показать график"
+
 }

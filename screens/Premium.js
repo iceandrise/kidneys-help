@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import {
   InnerContainer,
   PageTitle,
@@ -22,25 +23,25 @@ import {
 } from './../components/styles';
 
 const Premium = ({ navigation }) => {
+  const { t } = useTranslation(['common', 'calculators']);
   return (
     <>
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>Premium calculators</MainTitle>
+        <MainTitle>{t('common:Premium')}</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>
-          <PageTitle>Premium</PageTitle>
-          <SubTitle>Try premium calculators by only 10$!</SubTitle>
+          <PageTitle>{t('common:Only_2$')}</PageTitle>
         </TextView>
 
         <StyledButtonPremium onPress={() => navigation.navigate('Payment')}>
-          <CalcButtonText>Pay</CalcButtonText>
+          <CalcButtonText>{t('common:Pay')}</CalcButtonText>
         </StyledButtonPremium>
         <TextView>
           <TextLink onPress={() => navigation.navigate('Calculator')}>
-            <TextLinkContent>Go to Free calculators!</TextLinkContent>
+            <TextLinkContent>{t('common:Go_to_free_calculators')}</TextLinkContent>
           </TextLink>
         </TextView>
       </WelcomeContainer2>

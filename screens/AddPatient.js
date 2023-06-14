@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 import {
   CalcButtonText,
   MainTitle,
@@ -23,6 +24,7 @@ const SignUpSchema = Yup.object().shape({
 const AddPatient = ({ navigation }) => {
   const { addPatient, loading } = usePatientMutation();
   const { navigate } = useNavigation();
+  const { t } = useTranslation(['common', 'calculators']);
   return (
     <Formik
       initialValues={{
@@ -38,11 +40,11 @@ const AddPatient = ({ navigation }) => {
           <StatusBar style="light" />
           <WelcomeContainer>
             <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-            <MainTitle>Patient's info</MainTitle>
+            <MainTitle>{t('common:Adding')}</MainTitle>
           </WelcomeContainer>
           <WelcomeContainer2>
             <TextView>
-              <CalcButtonText>Enter surname</CalcButtonText>
+              <CalcButtonText>{t('common:Enter_surname')}</CalcButtonText>
               <TextInput
                 style={styles.input}
                 maxLength={10}
@@ -55,7 +57,7 @@ const AddPatient = ({ navigation }) => {
             </TextView>
 
             <TextView>
-              <CalcButtonText>Enter name</CalcButtonText>
+              <CalcButtonText>{t('common:Enter_name')}</CalcButtonText>
               <TextInput
                 style={styles.input}
                 maxLength={10}
@@ -68,7 +70,7 @@ const AddPatient = ({ navigation }) => {
             </TextView>
 
             <TextView>
-              <CalcButtonText>Enter room</CalcButtonText>
+              <CalcButtonText>{t('common:Enter_room')}</CalcButtonText>
               <TextInput
                 style={styles.input}
                 maxLength={8}
@@ -85,7 +87,7 @@ const AddPatient = ({ navigation }) => {
               disabled={!isValid}
               style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
             >
-              {!loading ? <Text style={styles.submitBtnText}>Add patient</Text> : <ActivityIndicator />}
+              {!loading ? <Text style={styles.submitBtnText}>{t('common:Add_patient')}</Text> : <ActivityIndicator />}
             </TouchableOpacity>
           </WelcomeContainer2>
         </>

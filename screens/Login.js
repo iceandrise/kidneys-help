@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 import { Colors } from './../components/styles';
 import { useAuthContext } from '../provider/AuthContext';
+import { useTranslation } from 'react-i18next';
 import {
   StyledContainer,
   InnerContainer,
@@ -32,6 +33,7 @@ import KeyboardSet from '../components/keyboardSet';
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const { logIn } = useAuthContext();
+  const { t } = useTranslation(['common', 'calculators']);
 
   return (
     <KeyboardSet>
@@ -40,7 +42,7 @@ const Login = ({ navigation }) => {
         <InnerContainer>
           <PageLogo resizeMode="cover" source={require('./../assets/image/logo.png')} />
           <PageTitle>KidneysHelp</PageTitle>
-          <SubTitle>Login</SubTitle>
+          <SubTitle>{t('common:Login')}</SubTitle>
 
           <Formik
             initialValues={{ email: 'TestHelper@gamil.com', password: '9999999' }}
@@ -77,7 +79,7 @@ const Login = ({ navigation }) => {
                 />
                 <MsgBox>...</MsgBox>
                 <StyledButton onPress={handleSubmit}>
-                  <ButtonText>Login</ButtonText>
+                  <ButtonText>{t('common:Login')}</ButtonText>
                 </StyledButton>
 
                 <Line />

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { View, Button, StyleSheet, TextInput } from 'react-native';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   MenuButtonText,
   PageTitle,
@@ -27,6 +28,7 @@ const Payment = ({ navigation }) => {
   const [cardNumber, OnChangeCardNumber] = useState('');
   const [cardHolder, OnChangeCardHolder] = useState('');
   const [mm, OnChangeMM] = useState('');
+  const { t } = useTranslation(['common', 'calculators']);
   const [yy, OnChangeYY] = useState('');
   const [cvv, OnChangeCVV] = useState('');
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -36,13 +38,13 @@ const Payment = ({ navigation }) => {
       <StatusBar style="light" />
       <WelcomeContainer>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle>Payment</MainTitle>
+        <MainTitle>{t('common:Payment')}</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2>
         <TextView>
           <MainImage resizeMode="cover" source={require('./../assets/image/card.png')} />
           <TextView>
-            <CalcButtonText>CARD NUMBER</CalcButtonText>
+            <CalcButtonText>{t('common:CARD_NUMBER')}</CalcButtonText>
             <TextInput
               style={styles.input}
               maxLength={16}
@@ -52,7 +54,7 @@ const Payment = ({ navigation }) => {
             />
           </TextView>
           <TextView>
-            <CalcButtonText>CARD HOLDER</CalcButtonText>
+            <CalcButtonText>{t('common:CARD_HOLDER')}</CalcButtonText>
             <TextInput
               style={styles.input}
               keyboardType="default"
@@ -100,7 +102,7 @@ const Payment = ({ navigation }) => {
             navigation.navigate('Calculator');
           }}
         >
-          <MenuButtonText>Pay</MenuButtonText>
+          <MenuButtonText>{t('common:Pay')}</MenuButtonText>
         </ResCalc>
       </WelcomeContainer2>
     </>

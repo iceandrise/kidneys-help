@@ -1,5 +1,5 @@
 import { ActivityIndicator, Dimensions, StyleSheet, Text, View } from 'react-native';
-
+import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { LineChart } from 'react-native-chart-kit';
 import { useDiaryQuery } from '../services/hooks/useDiaryQuery';

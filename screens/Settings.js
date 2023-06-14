@@ -27,7 +27,7 @@ const Settings = ({ navigation }) => {
     <>
       <WelcomeContainer style={[{ backgroundColor: theme.backgroundColor }]}>
         <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} />
-        <MainTitle style={[{ color: theme.color }]}>Settings</MainTitle>
+        <MainTitle style={[{ color: theme.color }]}>{t('calculators:Settings')}</MainTitle>
       </WelcomeContainer>
       <WelcomeContainer2 style={[{ backgroundColor: theme.backgroundColor }]}>
         <FormAct>

@@ -6,6 +6,7 @@ import { RadioButton } from 'react-native-paper';
 import * as Yup from 'yup';
 import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
 import { useGetPatients } from '../services/hooks/useGetPatients';
+import { useTranslation } from 'react-i18next';
 import {
   CalcButtonText,
   MainTitle,
@@ -35,6 +36,7 @@ const Watson = ({ navigation }) => {
   const { patients } = useGetPatients();
   const [sexType, setSexType] = useState('male');
   const [selectedItem, setSelectedItem] = useState(null);
+  const { t } = useTranslation(['common', 'calculators']);
 
   const items = useMemo(() => {
     const result = patients.map((patient) => ({
@@ -82,15 +84,15 @@ const Watson = ({ navigation }) => {
             <WelcomeContainer6>
               {/* <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} /> */}
 
-              <MainTitle>Water by Watson</MainTitle>
+              <MainTitle>{t('common:Water_by_Watson')}</MainTitle>
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
                 <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(WATSON_CALC)}>
-                  <Text>Show Reports</Text>
+                  <Text>{t('common:Show_reports')}</Text>
                 </Button>
                 <TextView>
-                  <CalcButtonText>Choose patient:</CalcButtonText>
+                  <CalcButtonText>{t('common:Choose_patient')}</CalcButtonText>
 
                   <Box maxW="300">
                     <Select
@@ -113,7 +115,7 @@ const Watson = ({ navigation }) => {
                   </Box>
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Sex</CalcButtonText>
+                  <CalcButtonText>{t('common:Sex')}</CalcButtonText>
                   <Radio.Group
                     name="myRadioGroup"
                     accessibilityLabel="favorite number"
@@ -123,15 +125,15 @@ const Watson = ({ navigation }) => {
                     }}
                   >
                     <Radio value="male" my={1}>
-                      <Text>{'Male'}</Text>
+                      <Text>{t('common:Male')}</Text>
                     </Radio>
                     <Radio value="female" my={1}>
-                      <Text>{'Female'}</Text>
+                      <Text>{t('common:Female')}</Text>
                     </Radio>
                   </Radio.Group>
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Age</CalcButtonText>
+                  <CalcButtonText>{t('common:Age')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={2}
@@ -143,7 +145,7 @@ const Watson = ({ navigation }) => {
                   {touched.age && errors.age && <Text style={styles.errorTxt}>{errors.age}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Height (cm)</CalcButtonText>
+                  <CalcButtonText>{t('common:Height')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -155,7 +157,7 @@ const Watson = ({ navigation }) => {
                   {touched.heightP && errors.heightP && <Text style={styles.errorTxt}>{errors.heightP}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Weight (kg)</CalcButtonText>
+                  <CalcButtonText>{t('common:Weight')}</CalcButtonText>
                   <TextInput
                     style={styles.numericInput}
                     maxLength={3}
@@ -172,7 +174,7 @@ const Watson = ({ navigation }) => {
                   disabled={!isValid}
                   style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
                 >
-                  <Text style={styles.submitBtnText}>Save Result</Text>
+                  <Text style={styles.submitBtnText}>{t('common:Save_Result')}</Text>
                 </TouchableOpacity>
               </WelcomeContainer2>
             </>

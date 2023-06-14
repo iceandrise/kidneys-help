@@ -8,6 +8,7 @@ import { useGetPatients } from '../services/hooks/useGetPatients';
 import { CalcButtonText, MainTitle, TextView, WelcomeContainer2, WelcomeContainer6 } from './../components/styles';
 import { useCalcResultMutation } from '../services/hooks/useCalcResultMutation';
 import { DUAGIRDAS_CALC } from '../constant';
+import { useTranslation } from 'react-i18next';
 
 const SignUpSchema = Yup.object().shape({
   postUrea: Yup.number().max(1000, 'enter a number less than or equal to 1000'),
@@ -24,6 +25,7 @@ const Daugirdas = ({ navigation }) => {
   const { addCalcResult, loading } = useCalcResultMutation();
   const { patients } = useGetPatients();
   const [selectedItem, setSelectedItem] = useState(null);
+  const { t } = useTranslation(['common', 'calculators']);
 
   const items = useMemo(() => {
     const result = patients.map((patient) => ({
@@ -70,15 +72,15 @@ const Daugirdas = ({ navigation }) => {
             <WelcomeContainer6>
               {/* <WelcomeImage resizeMode="cover" source={require('./../assets/image/logo.png')} /> */}
 
-              <MainTitle>Adequacy hemodialysis</MainTitle>
+              <MainTitle>{t('common:Daugirdas')}</MainTitle>
             </WelcomeContainer6>
             <>
               <WelcomeContainer2>
                 <Button size="sm" variant="subtle" colorScheme="secondary" onPress={() => navigate(DUAGIRDAS_CALC)}>
-                  <Text>Show Reports</Text>
+                  <Text>{t('common:Show_reports')}</Text>
                 </Button>
                 <TextView>
-                  <CalcButtonText>Choose patient:</CalcButtonText>
+                  <CalcButtonText>{t('common:Choose_patient')}</CalcButtonText>
 
                   <Box maxW="300">
                     <Select
@@ -102,7 +104,7 @@ const Daugirdas = ({ navigation }) => {
                 </TextView>
 
                 <TextView>
-                  <CalcButtonText>Post urea (mmol/l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Post_urea')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -114,7 +116,7 @@ const Daugirdas = ({ navigation }) => {
                   {touched.postUrea && errors.postUrea && <Text style={styles.errorTxt}>{errors.postUrea}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Pre urea (mmol/l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Pre_urea')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -126,7 +128,7 @@ const Daugirdas = ({ navigation }) => {
                   {touched.preUrea && errors.preUrea && <Text style={styles.errorTxt}>{errors.preUrea}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Volume of ultrafiltrate removed (l)</CalcButtonText>
+                  <CalcButtonText>{t('common:Volume_of_ultrafiltrate_removed')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -138,7 +140,7 @@ const Daugirdas = ({ navigation }) => {
                   {touched.UF && errors.UF && <Text style={styles.errorTxt}>{errors.UF}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Weight (kg)</CalcButtonText>
+                  <CalcButtonText>{t('common:Weight')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -150,7 +152,7 @@ const Daugirdas = ({ navigation }) => {
                   {touched.Weight && errors.Weight && <Text style={styles.errorTxt}>{errors.Weight}</Text>}
                 </TextView>
                 <TextView>
-                  <CalcButtonText>Duration of hemodialysis session (h)</CalcButtonText>
+                  <CalcButtonText>{t('common:Duration_of_hemodialysis_session')}</CalcButtonText>
                   <TextInput
                     style={styles.input}
                     maxLength={10}
@@ -169,7 +171,7 @@ const Daugirdas = ({ navigation }) => {
                   disabled={!isValid}
                   style={[styles.submitBtn, { backgroundColor: isValid ? '#CD5C5C' : '#E9967A' }]}
                 >
-                  <Text style={styles.submitBtnText}>Save Result</Text>
+                  <Text style={styles.submitBtnText}>{t('common:Save_Result')}</Text>
                 </TouchableOpacity>
               </WelcomeContainer2>
             </>
