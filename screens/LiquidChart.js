@@ -8,6 +8,7 @@ const daysOfWeek = [null, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export const LiquidChart = () => {
   const { result, loading } = useDiaryQuery('Liquid');
+  const { t } = useTranslation(['common', 'calculators']);
 
   const formattedArray = useMemo(() => {
     let temp = [];
@@ -46,7 +47,7 @@ export const LiquidChart = () => {
   );
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>LiquidChart</Text>
+      <Text style={styles.header}>{t('calculators:Liquid_consumed')}</Text>
       {!loading ? (
         <LineChart
           data={{

@@ -38,7 +38,7 @@ export default function Results() {
                     variant="solid"
                     rounded="4"
                   >
-                    {`Room: ${item?.patient?.room}`}
+                    {`# ${item?.patient?.room}`}
                   </Badge>
                   <Spacer />
                   <Text fontSize={10} color="coolGray.800">
@@ -49,7 +49,7 @@ export default function Results() {
                   {`${item?.patient?.firstName} ${item?.patient?.lastName}`}
                 </Text>
                 <Text mt="2" fontSize="sm" color="coolGray.700">
-                  {`${'eqClearance'} ${item?.eqClearance}`}
+                  {`${'eqClearance'}  ${item?.eqClearance}`}
                 </Text>
                 <Text mt="2" fontSize="sm" color="coolGray.700">
                   {`${'stClearance'} ${item?.stClearance}`}
@@ -91,11 +91,11 @@ export default function Results() {
                       color="darkBlue.600"
                       alignSelf="flex-start"
                     >
-                      Read More
+                      
                     </Text>
                   ) : (
                     <Text mt="2" fontSize={12} fontWeight="medium" color="darkBlue.600">
-                      Read More
+                      
                     </Text>
                   )}
                 </Flex>
@@ -110,7 +110,7 @@ export default function Results() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Heading>Results</Heading>
+        <Heading></Heading>
       </View>
 
       <FlatList

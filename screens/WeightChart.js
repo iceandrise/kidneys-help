@@ -1,5 +1,5 @@
 import { ActivityIndicator, Dimensions, StyleSheet, Text, View } from 'react-native';
-
+import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { LineChart } from 'react-native-chart-kit';
 import { useDiaryQuery } from '../services/hooks/useDiaryQuery';
@@ -8,6 +8,7 @@ const daysOfWeek = [null, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export const WeightChart = () => {
   const { result, loading } = useDiaryQuery('Weight');
+  const { t } = useTranslation(['common', 'calculators']);
 
   const formattedArray = useMemo(() => {
     let temp = [];
@@ -46,7 +47,7 @@ export const WeightChart = () => {
   );
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>WeightChart</Text>
+      <Text style={styles.header}>{t('calculators:Weight')}</Text>
       {!loading ? (
         <LineChart
           data={{

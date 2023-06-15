@@ -39,7 +39,7 @@ export default function MellitsCheekResults() {
                     variant="solid"
                     rounded="4"
                   >
-                    {`Room: ${item?.patient?.room}`}
+                    {`# ${item?.patient?.room}`}
                   </Badge>
 
                   <Spacer />
@@ -63,11 +63,11 @@ export default function MellitsCheekResults() {
                       color="darkBlue.600"
                       alignSelf="flex-start"
                     >
-                      Read More
+                      
                     </Text>
                   ) : (
                     <Text mt="2" fontSize={12} fontWeight="medium" color="darkBlue.600">
-                      Read More
+                      
                     </Text>
                   )}
                 </Flex>
@@ -82,7 +82,7 @@ export default function MellitsCheekResults() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Heading>Results</Heading>
+        <Heading></Heading>
       </View>
 
       <FlatList
